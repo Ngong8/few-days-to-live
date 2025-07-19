@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pv7ag2pq82k6"
+path="res://.godot/imported/RoundBrush1.obj-3fb5917385b6a4bf900ea9eac6714f00.mesh"
+
+[deps]
+
+files=["res://.godot/imported/RoundBrush1.obj-3fb5917385b6a4bf900ea9eac6714f00.mesh"]
+
+source_file="res://Assets/Models/UltimateInteriorPack/OBJ/RoundBrush1.obj"
+dest_files=["res://.godot/imported/RoundBrush1.obj-3fb5917385b6a4bf900ea9eac6714f00.mesh", "res://.godot/imported/RoundBrush1.obj-3fb5917385b6a4bf900ea9eac6714f00.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

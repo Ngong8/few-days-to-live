@@ -1,0 +1,29 @@
+The assets used for this Stop Killing Games(SKG) game jam as below:
+Fonts:
+https://www.dafont.com/vcr-osd-mono.font	(VCR OSD Mono by Riciery Leal)
+
+Music/Ambience:
+https://freesound.org/people/looplicator/sounds/785670/	(53 BPM Industrial Ambient Loop #13239 (WAV) by looplicator)
+https://freesound.org/people/looplicator/sounds/786086/	(Looppelganger #138 | Dark Ambient Sound by looplicator)
+https://freesound.org/people/Universfield/sounds/815021/	(Space (30s) by Universfield)
+https://freesound.org/people/Jadis0x_/sounds/815667/	(Looping Piano Melody by Jadis0x)
+
+SFX:
+https://freesound.org/people/Universfield/sounds/750242/
+https://freesound.org/people/wesleyextreme_gamer/sounds/574819/
+
+Models:
+https://zsky2000.itch.io/low-poly-weapons-pack-v1 (Low Poly Weapons Pack V.1 by Zsky)
+https://zsky2000.itch.io/ultimate-interior-props (Ultimate Interior Props by Zsky)
+https://zsky2000.itch.io/street-props (Street Props by Zsky)
+https://zsky2000.itch.io/modular-houses (Modular Houses by Zsky)
+https://zsky2000.itch.io/50-models-of-environment (Environment Pack V.2 by Zsky)
+
+Textures:
+https://cc0-textures.com/t/cc0t-ground-031 (Ground 031 by CC0 Textures)
+https://cc0-textures.com/t/cc0t-ground-037 (Ground 037 by CC0 Textures)
+https://cc0-textures.com/t/cc0t-fence-008-a (Fence 008 A by CC0 Textures)
+
+Shaders:
+https://godotshaders.com/shader/black-white-mask-for-fences-and-other-things/ (Black/White Mask For fences And Other things by ReVybes)
+https://godotshaders.com/shader/simple-water/	(Simple Water by dairycultist)

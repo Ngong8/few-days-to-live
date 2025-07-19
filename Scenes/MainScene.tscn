@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bejisu8lutcvp"]
+
+[ext_resource type="PackedScene" uid="uid://gyxob36s2ci5" path="res://Scenes/MainMenu.tscn" id="1_hpc76"]
+[ext_resource type="Script" uid="uid://bqwx0l50cbk37" path="res://Scripts/MainScene.gd" id="1_tr2i4"]
+[ext_resource type="PackedScene" uid="uid://m7jjpmhaawdh" path="res://Scenes/GameWorld.tscn" id="3_7rqgy"]
+
+[sub_resource type="Curve3D" id="Curve3D_qxria"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, -0.7, 0.1, 0, 0.7, -0.1, -0.5, 10, 4, 0, 0, 0, 0, 0, 0, 0, 10.5, 4, -0.105668, 0.528675, -0.0586252, 0.105668, -0.528675, 0.0586252, 0.5, 10.2, 4, 0, 0, 0, 0, 0, 0, -0.1, 9.7, 4),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="MainScene" type="Node3D"]
+script = ExtResource("1_tr2i4")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_qxria")
+
+[node name="MainCamPathFollow" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 10, 4)
+rotation_mode = 0
+
+[node name="MainCam" type="Camera3D" parent="Path3D/MainCamPathFollow"]
+transform = Transform3D(0.939693, 0.0885213, -0.330366, 0, 0.965926, 0.258819, 0.34202, -0.24321, 0.907673, 0, 0, 0)
+current = true
+far = 200.0
+
+[node name="GameWorld" parent="." instance=ExtResource("3_7rqgy")]
+
+[node name="MainMenu" parent="." node_paths=PackedStringArray("main_scene") instance=ExtResource("1_hpc76")]
+main_scene = NodePath("..")
+
+[node name="CamPathTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="CamPathTimer" to="." method="_on_cam_path_timer_timeout"]

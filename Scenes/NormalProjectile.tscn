@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwashlq8kj2d7"]
+
+[ext_resource type="Script" uid="uid://dpgdfmocjovur" path="res://Scripts/NormalProjectile.gd" id="1_0mitl"]
+[ext_resource type="PackedScene" uid="uid://c5msivjv8gr6h" path="res://Scenes/VelocityComponent.tscn" id="2_3ok44"]
+[ext_resource type="PackedScene" uid="uid://cip3vmney7ep7" path="res://Scenes/HitBoxComponent.tscn" id="3_7bj20"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yh0xc"]
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_epg7h"]
+radius = 0.2
+
+[node name="NormalProjectile" type="Node3D"]
+script = ExtResource("1_0mitl")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_yh0xc")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_3ok44")]
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("3_7bj20")]
+
+[node name="Col" type="CollisionShape3D" parent="HitBoxComponent"]
+shape = SubResource("SphereShape3D_epg7h")
+debug_color = Color(0.0901961, 0.647059, 0, 0.784314)

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0b0urb26usrt"]
+
+[ext_resource type="ArrayMesh" uid="uid://34coaswpdhdw" path="res://Assets/Models/WeaponsPack_V.1/OBJ/ShotgunAmmo_Box.obj" id="1_u6d0w"]
+[ext_resource type="PackedScene" uid="uid://bfduhlu8u6wp0" path="res://Scenes/InteractableArea.tscn" id="2_g5ebx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g5ebx"]
+size = Vector3(0.6, 0.4, 0.9)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_00mx1"]
+radius = 1.0
+
+[node name="ShotgunAmmoBox" type="StaticBody3D"]
+collision_mask = 4
+
+[node name="ShotgunAmmoBox" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.03, 0.23, 0.025)
+mesh = ExtResource("1_u6d0w")
+
+[node name="Col" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_g5ebx")
+
+[node name="InteractableArea" parent="." groups=["ShotgunAmmoBox"] instance=ExtResource("2_g5ebx")]
+
+[node name="Col" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("SphereShape3D_00mx1")
+debug_color = Color(0.878431, 0.690196, 0, 0.588235)

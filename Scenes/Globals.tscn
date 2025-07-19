@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdassp2mw1nti"]
+
+[ext_resource type="Script" uid="uid://cg464gdpjw7vr" path="res://Scripts/Globals.gd" id="1_18ypc"]
+[ext_resource type="AudioStream" uid="uid://ctsvl2duja445" path="res://Assets/MusicAmbient/815667__jadis0x__looping-piano-melody.wav" id="2_t1ydv"]
+[ext_resource type="FontFile" uid="uid://c0wcpfhi5sdmt" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="3_jbomx"]
+
+[node name="Globals" type="Node"]
+script = ExtResource("1_18ypc")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_t1ydv")
+bus = &"Music"
+
+[node name="ChangeMusicTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="FPSLbl" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_jbomx")
+theme_override_font_sizes/font_size = 20
+text = "FPS: 60"
+
+[connection signal="timeout" from="ChangeMusicTimer" to="." method="_on_change_music_timer_timeout"]

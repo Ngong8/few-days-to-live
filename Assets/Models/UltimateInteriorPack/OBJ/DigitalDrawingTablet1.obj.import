@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dmkkj3pn10820"
+path="res://.godot/imported/DigitalDrawingTablet1.obj-56d271342fb4a430bc256bc475e7e0aa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/DigitalDrawingTablet1.obj-56d271342fb4a430bc256bc475e7e0aa.mesh"]
+
+source_file="res://Assets/Models/UltimateInteriorPack/OBJ/DigitalDrawingTablet1.obj"
+dest_files=["res://.godot/imported/DigitalDrawingTablet1.obj-56d271342fb4a430bc256bc475e7e0aa.mesh", "res://.godot/imported/DigitalDrawingTablet1.obj-56d271342fb4a430bc256bc475e7e0aa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://j71anaiirlfc"
+path="res://.godot/imported/GarageWall01_house4.obj-be120f8ec5889b60626e7925b47d39de.mesh"
+
+[deps]
+
+files=["res://.godot/imported/GarageWall01_house4.obj-be120f8ec5889b60626e7925b47d39de.mesh"]
+
+source_file="res://Assets/Models/Modular_HousesPack/House_04/OBJ/GarageWall01_house4.obj"
+dest_files=["res://.godot/imported/GarageWall01_house4.obj-be120f8ec5889b60626e7925b47d39de.mesh", "res://.godot/imported/GarageWall01_house4.obj-be120f8ec5889b60626e7925b47d39de.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,451 @@
+[gd_scene load_steps=13 format=3 uid="uid://gyxob36s2ci5"]
+
+[ext_resource type="Script" uid="uid://b03uqpv81wn3e" path="res://Scripts/MainMenu.gd" id="1_853f1"]
+[ext_resource type="FontFile" uid="uid://c0wcpfhi5sdmt" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="1_tt5f1"]
+[ext_resource type="AudioStream" uid="uid://dep5k44k3drif" path="res://Assets/SFX/750242__universfield__creepy-horror-sound.mp3" id="3_8saeu"]
+[ext_resource type="Theme" uid="uid://dlp0offq02ae5" path="res://Assets/UIDesign/GeneralTheme.theme" id="3_df05h"]
+[ext_resource type="PackedScene" uid="uid://cx6hbq73hgu4u" path="res://Scenes/OptionsPnl.tscn" id="4_ghw46"]
+[ext_resource type="Script" uid="uid://b2wokqqpcp4ny" path="res://Scripts/CreditsPnl.gd" id="6_8um5k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt5f1"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df05h"]
+bg_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="Animation" id="Animation_8saeu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HorrorTitleLbl:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HorrorTitlePnl:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(110, 60)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrorTitlePnl:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(325, 30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HorrorTitlePnl:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HorrorTitleLbl:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_853f1"]
+resource_name = "Starting Game"
+length = 5.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HorrorTitleLbl:theme_override_colors/font_color")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HorrorTitlePnl:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.1, 3.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(110, 60), Vector2(110, 60), Vector2(1920, 1080), Vector2(1920, 1080)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrorTitlePnl:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.1, 3.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(325, 30), Vector2(325, 30), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HorrorTitlePnl:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.1, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HorrorTitleLbl:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.15, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ghw46"]
+resource_name = "Transition To Game"
+length = 2.0
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8, 0.85, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [false],
+"method": &"_set_menu_thingy_visibility"
+}, {
+"args": [],
+"method": &"_run_intro_scene"
+}, {
+"args": [false],
+"method": &"_set_horror_visibility"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HorrorTitlePnl:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrorTitleLbl:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8saeu"]
+_data = {
+&"RESET": SubResource("Animation_8saeu"),
+&"Starting Game": SubResource("Animation_853f1"),
+&"Transition To Game": SubResource("Animation_ghw46")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_853f1")
+
+[node name="TitleLbl" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 440.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("1_tt5f1")
+theme_override_font_sizes/font_size = 40
+text = "Few days to Live"
+horizontal_alignment = 1
+
+[node name="MenuGrid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -300.0
+offset_right = 410.0
+offset_bottom = 300.0
+grow_vertical = 2
+theme = ExtResource("3_df05h")
+
+[node name="StartGameBtn" type="Button" parent="MenuGrid"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+tooltip_text = "Start game NOW! See how long you can live."
+focus_mode = 0
+text = "Start Game"
+
+[node name="OptionsBtn" type="Button" parent="MenuGrid"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+tooltip_text = "Adjust settings to your liking."
+focus_mode = 0
+text = "Options"
+
+[node name="CreditsBtn" type="Button" parent="MenuGrid"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+tooltip_text = "See who made the things of the game."
+focus_mode = 0
+text = "Credits"
+
+[node name="QuitBtn" type="Button" parent="MenuGrid"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+tooltip_text = "Exit to Desktop."
+focus_mode = 0
+text = "Quit"
+
+[node name="HorrorTitlePnl" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 30.0
+offset_right = 435.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tt5f1")
+
+[node name="HorrorTitleLbl" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 440.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_tt5f1")
+theme_override_font_sizes/font_size = 40
+text = "            LIVE"
+horizontal_alignment = 1
+
+[node name="StartingGamePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8saeu")
+
+[node name="DarkTintPnl" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_df05h")
+
+[node name="OptionsPnl" parent="." instance=ExtResource("4_ghw46")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsPnl" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_df05h")
+script = ExtResource("6_8um5k")
+
+[node name="CreditsLbl" type="Label" parent="CreditsPnl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 20.0
+offset_right = 49.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Credits"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsPnl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -220.0
+offset_right = 270.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPnl/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemLbl1" type="Label" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Developer: Ngong2000 (on itch.io)"
+
+[node name="ItemLbl2" type="Label" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "The assets used:"
+
+[node name="ItemLbl3" type="Label" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fonts:
+"
+
+[node name="FontLink1" type="LinkButton" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "VCR OSD Mono by Riciery Leal"
+uri = "https://www.dafont.com/vcr-osd-mono.font"
+
+[node name="ItemLbl4" type="Label" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+Music/Ambience:
+"
+
+[node name="FontLink2" type="LinkButton" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "53 BPM Industrial Ambient Loop #13239 (WAV) by looplicator"
+uri = "https://freesound.org/people/looplicator/sounds/785670/"
+
+[node name="FontLink3" type="LinkButton" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Looppelganger #138 | Dark Ambient Sound by looplicator"
+uri = "https://freesound.org/people/looplicator/sounds/786086/"
+
+[node name="FontLink4" type="LinkButton" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Space (30s) by Universfield"
+uri = "https://freesound.org/people/Universfield/sounds/815021/"
+
+[node name="FontLink5" type="LinkButton" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Looping Piano Melody by Jadis0x"
+uri = "https://freesound.org/people/Jadis0x_/sounds/815667/"
+
+[node name="ItemLbl5" type="Label" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+SFX:
+"
+
+[node name="FontLink6" type="LinkButton" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Creepy Horror Sound by Universfield"
+uri = "https://freesound.org/people/Universfield/sounds/750242/"
+
+[node name="FontLink7" type="LinkButton" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Horror Checkpoint/Saving game sound effect by wesleyextreme_gamer"
+uri = "https://freesound.org/people/wesleyextreme_gamer/sounds/574819/"
+
+[node name="ItemLbl6" type="Label" parent="CreditsPnl/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+
+Note: You can Shift + scroll to
+horizontally scroll.
+"
+
+[node name="ReminderLbl" type="Label" parent="CreditsPnl"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -50.0
+offset_right = 582.0
+offset_bottom = -28.0
+grow_vertical = 0
+text = "Press \"Esc\" to exit the credits screen."
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8saeu")
+}
+
+[connection signal="pressed" from="MenuGrid/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
+[connection signal="pressed" from="MenuGrid/OptionsBtn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="MenuGrid/CreditsBtn" to="." method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="MenuGrid/QuitBtn" to="." method="_on_quit_btn_pressed"]

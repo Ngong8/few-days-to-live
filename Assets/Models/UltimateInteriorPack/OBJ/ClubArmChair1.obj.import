@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://stu7i4bbddr3"
+path="res://.godot/imported/ClubArmChair1.obj-98190039b5bac19cf4338a27f49616fa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ClubArmChair1.obj-98190039b5bac19cf4338a27f49616fa.mesh"]
+
+source_file="res://Assets/Models/UltimateInteriorPack/OBJ/ClubArmChair1.obj"
+dest_files=["res://.godot/imported/ClubArmChair1.obj-98190039b5bac19cf4338a27f49616fa.mesh", "res://.godot/imported/ClubArmChair1.obj-98190039b5bac19cf4338a27f49616fa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

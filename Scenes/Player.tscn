@@ -1,0 +1,418 @@
+[gd_scene load_steps=27 format=3 uid="uid://c7fme73utoj8r"]
+
+[ext_resource type="Script" uid="uid://cot1d2omehukt" path="res://Scripts/Player.gd" id="1_kyqiw"]
+[ext_resource type="ArrayMesh" uid="uid://by22dqf4r03jk" path="res://Assets/Models/CrudeSpearModel.obj" id="2_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://dlfrkdb84cntc" path="res://Scenes/VitalComponent.tscn" id="2_gntrk"]
+[ext_resource type="Script" uid="uid://cqax5u6qei81w" path="res://Scripts/Equipment.gd" id="2_ksbbd"]
+[ext_resource type="PackedScene" uid="uid://5ph1chleibr6" path="res://Assets/Models/Shotgun_01.glb" id="3_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://c5msivjv8gr6h" path="res://Scenes/VelocityComponent.tscn" id="3_gntrk"]
+[ext_resource type="Theme" uid="uid://dlp0offq02ae5" path="res://Assets/UIDesign/GeneralTheme.theme" id="4_5ixxa"]
+[ext_resource type="Script" uid="uid://ib0y7ll3132t" path="res://Scripts/InventoryComponent.gd" id="4_dewec"]
+[ext_resource type="ArrayMesh" uid="uid://dj0xkg07tqg6k" path="res://Assets/Models/MuzzleFlashModel.obj" id="4_megsn"]
+[ext_resource type="Script" uid="uid://doldypd8k64s7" path="res://Scripts/InteractArea.gd" id="7_52ee3"]
+[ext_resource type="PackedScene" uid="uid://cip3vmney7ep7" path="res://Scenes/HitBoxComponent.tscn" id="8_glx4g"]
+[ext_resource type="PackedScene" uid="uid://yhsralfexmde" path="res://Scenes/HurtBoxComponent.tscn" id="10_yoq75"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_53j0q"]
+radius = 0.3
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dewec"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q75nt"]
+radius = 0.35
+height = 1.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_glx4g"]
+size = Vector3(0.25, 0.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yoq75"]
+cull_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_ui0sf"]
+size = Vector3(0.1, 0.1, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ixxa"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhhdu"]
+size = Vector3(0.7, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ksbbd"]
+size = Vector3(0.75, 1.6, 0.75)
+
+[sub_resource type="Animation" id="Animation_5ixxa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCam/Hands:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerCam/Hands/Equipment/Shotgun_01/ShotgunPump:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.670577, -0.0193431, -0.0144307)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerCam/Hands/Equipment/Shotgun_01/MuzzleFlash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerCam/Hands/MuzzleLight:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_dewec"]
+resource_name = "Swapping Equipment"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCam/Hands:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.64, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.959931, 1.74533, 0), Vector3(-0.959931, 1.74533, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.64),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_swap_to_equipment"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nn08x"]
+resource_name = "Pump Shotgun"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCam/Hands/Equipment/Shotgun_01/ShotgunPump:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.6),
+"transitions": PackedFloat32Array(1, -2, 0.5),
+"update": 0,
+"values": [Vector3(0.670577, -0.0193431, -0.0144307), Vector3(0.236976, -0.0193431, -0.0144307), Vector3(0.670577, -0.0193431, -0.0144307)]
+}
+
+[sub_resource type="Animation" id="Animation_ksbbd"]
+resource_name = "Using Shotgun"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCam/Hands/Equipment/Shotgun_01/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerCam/Hands/MuzzleLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nn08x"]
+_data = {
+&"Pump Shotgun": SubResource("Animation_nn08x"),
+&"RESET": SubResource("Animation_5ixxa"),
+&"Swapping Equipment": SubResource("Animation_dewec"),
+&"Using Shotgun": SubResource("Animation_ksbbd")
+}
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("vital_component", "velocity_component", "inventory_component")]
+collision_layer = 4
+script = ExtResource("1_kyqiw")
+vital_component = NodePath("VitalComponent")
+velocity_component = NodePath("VelocityComponent")
+inventory_component = NodePath("InventoryComponent")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_53j0q")
+surface_material_override/0 = SubResource("StandardMaterial3D_dewec")
+
+[node name="Col" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_q75nt")
+debug_color = Color(0.0352941, 1, 0, 0.784314)
+
+[node name="PlayerCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+fov = 80.0
+far = 256.0
+
+[node name="Hands" type="Node3D" parent="PlayerCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.3)
+
+[node name="Equipment" type="Node3D" parent="PlayerCam/Hands"]
+script = ExtResource("2_ksbbd")
+
+[node name="CrudeSpearModel" type="MeshInstance3D" parent="PlayerCam/Hands/Equipment"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.25, 0, -0.4)
+layers = 2
+mesh = ExtResource("2_bhhdu")
+skeleton = NodePath("../../../..")
+
+[node name="HitBoxComponent" parent="PlayerCam/Hands/Equipment/CrudeSpearModel" instance=ExtResource("8_glx4g")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -0.7)
+spawn_decal = true
+avoid_target_name = "Player"
+damage = 15
+
+[node name="Col" type="CollisionShape3D" parent="PlayerCam/Hands/Equipment/CrudeSpearModel/HitBoxComponent"]
+shape = SubResource("BoxShape3D_glx4g")
+debug_color = Color(0.330671, 0.516907, 0.109104, 0.784314)
+
+[node name="Shotgun_01" parent="PlayerCam/Hands/Equipment" instance=ExtResource("3_bhhdu")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0.2, 0, -0.45)
+
+[node name="MuzzleFlash" type="Node3D" parent="PlayerCam/Hands/Equipment/Shotgun_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0.15, 0)
+
+[node name="MuzzleFlashModel" type="MeshInstance3D" parent="PlayerCam/Hands/Equipment/Shotgun_01/MuzzleFlash"]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0, 0)
+mesh = ExtResource("4_megsn")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yoq75")
+
+[node name="MuzzleFlashModel2" type="MeshInstance3D" parent="PlayerCam/Hands/Equipment/Shotgun_01/MuzzleFlash"]
+transform = Transform3D(5.73206e-15, 1.31134e-07, 3, 3, -1.31134e-07, 0, 1.31134e-07, 3, -1.31134e-07, 0, 0, 0)
+mesh = ExtResource("4_megsn")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yoq75")
+
+[node name="GunMesh" type="MeshInstance3D" parent="PlayerCam/Hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.25)
+visible = false
+layers = 2
+mesh = SubResource("BoxMesh_ui0sf")
+
+[node name="CarryingHand" type="MeshInstance3D" parent="PlayerCam/Hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, -0.075, -0.1)
+mesh = SubResource("BoxMesh_5ixxa")
+
+[node name="MuzzleLight" type="OmniLight3D" parent="PlayerCam/Hands"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, 0.05, -1.1)
+light_color = Color(1, 1, 0, 1)
+shadow_enabled = true
+
+[node name="GunSFXPlayer" type="AudioStreamPlayer" parent="PlayerCam/Hands"]
+bus = &"SFX"
+
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_gntrk")]
+entity = NodePath("..")
+move_speed = 4
+move_speed_thru_liquids = 2
+
+[node name="InteractArea" type="Area3D" parent="." node_paths=PackedStringArray("inventory_component")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -0.7)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("7_52ee3")
+inventory_component = NodePath("../InventoryComponent")
+
+[node name="Col" type="CollisionShape3D" parent="InteractArea"]
+shape = SubResource("BoxShape3D_bhhdu")
+debug_color = Color(0.623529, 0.384314, 0, 0.784314)
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("vital_component") instance=ExtResource("10_yoq75")]
+own_name = "Player"
+vital_component = NodePath("../VitalComponent")
+
+[node name="Col" type="CollisionShape3D" parent="HurtBoxComponent"]
+shape = SubResource("BoxShape3D_ksbbd")
+debug_color = Color(0.996078, 0, 0.188235, 0.784314)
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("4_dewec")
+
+[node name="VitalComponent" parent="." node_paths=PackedStringArray("infection_bar", "vitality_lbl") instance=ExtResource("2_gntrk")]
+infection_bar = NodePath("../HUD/StatsSection/InfectionBar")
+vitality_lbl = NodePath("../HUD/StatsSection/VitalityLbl")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="RecoverTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_5ixxa")
+
+[node name="StatsSection" type="GridContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 400.0
+grow_horizontal = 0
+theme_override_constants/v_separation = 20
+
+[node name="InfectionLbl" type="Label" parent="HUD/StatsSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Infection:"
+
+[node name="InfectionBar" type="ProgressBar" parent="HUD/StatsSection"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+step = 0.001
+value = 25.55
+show_percentage = false
+
+[node name="VitalityLbl" type="Label" parent="HUD/StatsSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Status: HEALTHY"
+
+[node name="CenterPoint" type="ColorRect" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.823529, 0.882353, 0.92549, 0.784314)
+
+[node name="PerishPnl" type="Panel" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PerishLbl" type="Label" parent="HUD/PerishPnl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -363.0
+offset_top = 100.0
+offset_right = 363.0
+offset_bottom = 136.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "You have perished... Rest well."
+
+[node name="ElapsedLbl" type="Label" parent="HUD/PerishPnl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -140.0
+offset_right = 300.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Survived time: 100 seconds."
+
+[node name="ChecklistLbl" type="Label" parent="HUD/PerishPnl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -30.5
+offset_right = 400.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Things in checklist done:
+Generator turned on, etc..."
+autowrap_mode = 3
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nn08x")
+}
+
+[connection signal="area_entered" from="InteractArea" to="InteractArea" method="_on_area_entered"]
+[connection signal="update_selected_item" from="InventoryComponent" to="." method="_on_InventoryComponent_updateSelectedItem"]
+[connection signal="recover" from="VitalComponent" to="." method="_on_VitalComponent_recover"]
+[connection signal="zero_health" from="VitalComponent" to="." method="_on_VitalComponent_zeroHealth"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
+[connection signal="timeout" from="RecoverTimer" to="." method="_on_RecoverTimer_timeout"]
+
+[editable path="PlayerCam/Hands/Equipment/Shotgun_01"]

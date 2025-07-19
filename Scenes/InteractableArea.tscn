@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bfduhlu8u6wp0"]
+
+[node name="InteractableArea" type="Area3D" groups=["Pickups"]]
+collision_layer = 4
+collision_mask = 0
+monitoring = false

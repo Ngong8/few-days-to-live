@@ -1,0 +1,178 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx6hbq73hgu4u"]
+
+[ext_resource type="Script" uid="uid://dsy33gbifckxo" path="res://Scripts/OptionsPnl.gd" id="1_2vxow"]
+[ext_resource type="Theme" uid="uid://dlp0offq02ae5" path="res://Assets/UIDesign/GeneralTheme.theme" id="1_21fqh"]
+
+[node name="OptionsPnl" type="Panel"]
+custom_minimum_size = Vector2(600, 600)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_21fqh")
+script = ExtResource("1_2vxow")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Video/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="WindowModeLbl" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Set you want either windowed or fullscreen mode."
+mouse_filter = 0
+text = "Window Mode"
+
+[node name="WindowModeOptBtn" type="OptionButton" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+
+[node name="WindowSizeLb" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Set how large the resolution size you want. Only works in windowed mode, I think."
+mouse_filter = 0
+text = "Window Mode"
+
+[node name="WindowSizeOptBtn" type="OptionButton" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+selected = 0
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+
+[node name="FPSLbl" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Set to either show FPS(frames per second) label on top left or not.
+Useful to check how good the game is running."
+mouse_filter = 0
+text = "Show FPS?"
+
+[node name="FPSCheckbox" type="CheckBox" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+button_pressed = true
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="MasterVolLbl" type="Label" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust overall volume of music and sound effects. Slide to the most left to turn off."
+mouse_filter = 0
+text = "Master Volume"
+
+[node name="MasterVolSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.5
+step = 0.01
+value = 0.75
+
+[node name="MusicVolLbl" type="Label" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust volume of music. Slide to the most left to turn off."
+mouse_filter = 0
+text = "Music Volume"
+
+[node name="MusicVolSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.2
+step = 0.01
+value = 0.8
+
+[node name="SFXVolLbl" type="Label" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust volume of sound effects. Slide to the most left to turn off."
+mouse_filter = 0
+text = "SFX Volume"
+
+[node name="SFXVolSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="ReminderLbl" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -50.0
+offset_right = 582.0
+offset_bottom = -28.0
+grow_vertical = 0
+text = "Press \"Esc\" to exit the options screen."
+
+[connection signal="item_selected" from="TabContainer/Video/MarginContainer/GridContainer/WindowModeOptBtn" to="." method="_on_window_mode_opt_btn_item_selected"]
+[connection signal="item_selected" from="TabContainer/Video/MarginContainer/GridContainer/WindowSizeOptBtn" to="." method="_on_window_size_opt_btn_item_selected"]
+[connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/FPSCheckbox" to="." method="_on_fps_checkbox_toggled"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/MasterVolSlider" to="." method="_on_master_vol_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/MusicVolSlider" to="." method="_on_music_vol_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/GridContainer/SFXVolSlider" to="." method="_on_sfx_vol_slider_value_changed"]

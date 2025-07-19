@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vm36wqna1msv"
+path="res://.godot/imported/Window01_house5.obj-89b1147e95a8c0184013c66728f5a871.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Window01_house5.obj-89b1147e95a8c0184013c66728f5a871.mesh"]
+
+source_file="res://Assets/Models/Modular_HousesPack/House_05/OBJ/Window01_house5.obj"
+dest_files=["res://.godot/imported/Window01_house5.obj-89b1147e95a8c0184013c66728f5a871.mesh", "res://.godot/imported/Window01_house5.obj-89b1147e95a8c0184013c66728f5a871.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

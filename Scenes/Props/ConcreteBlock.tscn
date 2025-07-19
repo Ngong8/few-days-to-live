@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://demqt51ot5psy"]
+
+[ext_resource type="ArrayMesh" uid="uid://cc80hcti1vicu" path="res://Assets/Models/StreetProps/OBJ/TrafficBarrier_03.obj" id="1_pnqun"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pnqun"]
+points = PackedVector3Array(6.35299, 4.08162, 1.40599, 6.35424, -4.18032, 2.53594, 6.35299, 4.08162, -1.40648, -6.35424, 4.08162, 1.40599, 6.35424, -4.18032, -2.53594, -6.35424, -4.18032, 2.53594, -6.35424, 4.08162, -1.40648, -6.35424, -4.18032, -2.53594)
+
+[node name="ConcreteBlock" type="StaticBody3D"]
+collision_mask = 4
+
+[node name="TrafficBarrier03" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = ExtResource("1_pnqun")
+
+[node name="Col" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_pnqun")
