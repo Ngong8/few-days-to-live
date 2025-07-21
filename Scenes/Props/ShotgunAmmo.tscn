@@ -8,8 +8,9 @@ radius = 0.1
 height = 0.3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_00mx1"]
+radius = 1.0
 
-[node name="ShotgunAmmoBox" type="StaticBody3D"]
+[node name="ShotgunAmmo" type="StaticBody3D"]
 collision_mask = 4
 
 [node name="ShotgunAmmo" type="MeshInstance3D" parent="."]

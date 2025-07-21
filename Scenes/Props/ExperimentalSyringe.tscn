@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dys1jry23vhep"]
+
+[ext_resource type="PackedScene" uid="uid://bwfevcfnnqomn" path="res://Assets/Models/ExperimentalSyringe.glb" id="2_npiwa"]
+[ext_resource type="PackedScene" uid="uid://bfduhlu8u6wp0" path="res://Scenes/InteractableArea.tscn" id="2_pw4b1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pw4b1"]
+size = Vector3(0.1, 0.1, 0.3)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_00mx1"]
+radius = 1.0
+
+[node name="ExperimentalSyringe" type="StaticBody3D"]
+collision_mask = 4
+
+[node name="ExperimentalSyringe" parent="." instance=ExtResource("2_npiwa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Col" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pw4b1")
+
+[node name="InteractableArea" parent="." groups=["Syringe"] instance=ExtResource("2_pw4b1")]
+
+[node name="Col" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("SphereShape3D_00mx1")
+debug_color = Color(0.878431, 0.690196, 0, 0.588235)

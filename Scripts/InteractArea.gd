@@ -12,6 +12,7 @@ func _on_area_entered(area: Area3D) -> void:
 			elif area.is_in_group("ShotgunAmmoBox"):
 				inventory_component._add_item_quantity("Shotgun Ammo", 10)
 			elif area.is_in_group("ShotgunAmmo"):
+				print_debug("Pick up a shotgun ammo!")
 				inventory_component._add_item_quantity("Shotgun Ammo", 1)
 			elif area.is_in_group("Food"):
 				inventory_component._add_item_quantity("Food", 1)

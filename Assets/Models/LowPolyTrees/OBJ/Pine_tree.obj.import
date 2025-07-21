@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://kdj3okeoq1ys"
+path="res://.godot/imported/Pine_tree.obj-941ce982c1d85c7a29d3617033cdcfdb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pine_tree.obj-941ce982c1d85c7a29d3617033cdcfdb.mesh"]
+
+source_file="res://Assets/Models/LowPolyTrees/OBJ/Pine_tree.obj"
+dest_files=["res://.godot/imported/Pine_tree.obj-941ce982c1d85c7a29d3617033cdcfdb.mesh", "res://.godot/imported/Pine_tree.obj-941ce982c1d85c7a29d3617033cdcfdb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

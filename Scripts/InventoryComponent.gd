@@ -7,15 +7,20 @@ const NUM_HOTBAR_SLOTS = 4
 
 var inventory : Dictionary = {
 	0: ["Spear", 1],
-	1: ["Shotgun", 0],
-	2: ["Food", 2],
-	3: ["Experimental Healing Syringe", 0],
-	4: ["Shotgun Ammo", 0]
+	1: ["Shotgun", 1],
+	2: ["Food", 4],
+	3: ["Experimental Healing Syringe", 1],
+	4: ["Shotgun Ammo", 10]
 }
+
+@onready var shotgun_ammo_lbl: Label = $"../HUD/InventorySection/ShotgunFlow/ShotgunAmmoLbl"
+@onready var food_lbl: Label = $"../HUD/InventorySection/FoodFlow/FoodLbl"
+@onready var syringe_lbl: Label = $"../HUD/InventorySection/SyringeFlow/SyringeLbl"
 
 var active_hotbar_index : int = 0
 
 func _ready() -> void:
+	_update_inventory_display()
 	return
 
 func _input(event: InputEvent) -> void:
@@ -54,7 +59,25 @@ func _add_item_quantity(item_name: String, amount: int):
 		if inventory[key][0] == item_name:
 			inventory[key][1] += amount
 			print_debug(item_name, " now: ", inventory[key][1])  # Debug
+			_update_inventory_display()
 			return
 	# Optionally, add the item if not found
 	var new_key = inventory.size()
 	inventory[new_key] = [item_name, amount]
+	_update_inventory_display()
+	return
+
+func _subtract_item_quantity(item_name: String, amount: int):
+	for key in inventory:
+		if inventory[key][0] == item_name:
+			inventory[key][1] -= amount
+			print_debug(item_name, " now: ", inventory[key][1])  # Debug
+			_update_inventory_display()
+			return
+	return
+
+func _update_inventory_display() -> void:
+	food_lbl.text = str(inventory[2][1])
+	syringe_lbl.text = str(inventory[3][1])
+	shotgun_ammo_lbl.text = str(inventory[4][1])
+	return

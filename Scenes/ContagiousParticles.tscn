@@ -1,0 +1,209 @@
+[gd_scene load_steps=21 format=3 uid="uid://bummvyb5oango"]
+
+[ext_resource type="Script" uid="uid://r84oqmhca0pv" path="res://Scripts/ContagiousParticles.gd" id="1_0xy5y"]
+[ext_resource type="PackedScene" uid="uid://yhsralfexmde" path="res://Scenes/HurtBoxComponent.tscn" id="1_xus30"]
+[ext_resource type="PackedScene" uid="uid://dlfrkdb84cntc" path="res://Scenes/VitalComponent.tscn" id="2_8s02h"]
+[ext_resource type="PackedScene" uid="uid://c5msivjv8gr6h" path="res://Scenes/VelocityComponent.tscn" id="2_ug6vd"]
+[ext_resource type="PackedScene" uid="uid://cip3vmney7ep7" path="res://Scenes/HitBoxComponent.tscn" id="3_ug6vd"]
+[ext_resource type="AudioStream" uid="uid://dody8nddbjfg8" path="res://Assets/SFX/528270__lilmati__radiation.wav" id="6_q1itw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0xy5y"]
+radial_segments = 16
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ug6vd"]
+albedo_color = Color(0.539863, 1.03481e-06, 2.88785e-07, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.302127, 0.0251409, 0.0250842, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wcdrx"]
+radius = 0.6
+
+[sub_resource type="Gradient" id="Gradient_0xy5y"]
+offsets = PackedFloat32Array(0.0723404, 0.514894, 0.944681)
+colors = PackedColorArray(0.215686, 0, 0, 1, 0.513753, 1.72067e-06, 4.81308e-08, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ug6vd"]
+gradient = SubResource("Gradient_0xy5y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q1itw"]
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_ug6vd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxxcn"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_a1jm4"]
+material = SubResource("StandardMaterial3D_gxxcn")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q1itw"]
+radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_litqi"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_q1itw"]
+resource_name = "Glowing"
+length = 0.2
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.85, 1.0, 0.85]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ug6vd"]
+resource_name = "Implode"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.58, 0.65, 0.74385, 0.81385, 0.89, 1),
+"transitions": PackedFloat32Array(1, 0.5, 1, 1, 1, 1, 1, 0.5),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0), Vector3(0.4, 0.4, 0.4), Vector3(0.1, 0.1, 0.1), Vector3(0.4, 0.4, 0.4), Vector3(0.1, 0.1, 0.1), Vector3(0.25, 0.25, 0.25), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gxxcn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a1jm4"]
+_data = {
+&"Glowing": SubResource("Animation_q1itw"),
+&"Implode": SubResource("Animation_ug6vd"),
+&"RESET": SubResource("Animation_gxxcn")
+}
+
+[node name="ContagiousParticles" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_0xy5y")
+chase_distance = 6.0
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_0xy5y")
+surface_material_override/0 = SubResource("StandardMaterial3D_ug6vd")
+
+[node name="Col" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_wcdrx")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 160
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_q1itw")
+draw_pass_1 = SubResource("QuadMesh_a1jm4")
+
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_q1itw")
+autoplay = true
+max_distance = 20.0
+bus = &"SFX"
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_ug6vd")]
+move_speed = 4
+move_speed_thru_liquids = 1
+jump_force = 0
+jump_force_thru_liquids = 0
+gravity = 0.0
+gravity_thru_liquids = 0.0
+acceleration = 0.35
+air_acceleration = 0.35
+air_friction = 0.75
+ground_friction = 0.75
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("3_ug6vd")]
+avoid_target_name = "Particles"
+infect_value = 0.25
+is_melee = true
+
+[node name="Col" type="CollisionShape3D" parent="HitBoxComponent"]
+shape = SubResource("SphereShape3D_q1itw")
+debug_color = Color(3.41728e-06, 0.641689, 0.330238, 0.42)
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("vital_component") instance=ExtResource("1_xus30")]
+own_name = "Particles"
+vital_component = NodePath("../VitalComponent")
+
+[node name="Col" type="CollisionShape3D" parent="HurtBoxComponent"]
+shape = SubResource("SphereShape3D_litqi")
+debug_color = Color(0.996078, 0, 0.188235, 0.784314)
+
+[node name="VitalComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("2_8s02h")]
+entity = NodePath("..")
+vitality = 50
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a1jm4")
+}
+autoplay = "Glowing"
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="HitBoxComponent" to="." method="_on_HitBoxComponent_areaEntered"]
+[connection signal="zero_health" from="VitalComponent" to="." method="_on_VitalComponent_zeroHealth"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]

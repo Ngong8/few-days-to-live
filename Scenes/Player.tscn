@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c7fme73utoj8r"]
+[gd_scene load_steps=47 format=3 uid="uid://c7fme73utoj8r"]
 
 [ext_resource type="Script" uid="uid://cot1d2omehukt" path="res://Scripts/Player.gd" id="1_kyqiw"]
 [ext_resource type="ArrayMesh" uid="uid://by22dqf4r03jk" path="res://Assets/Models/CrudeSpearModel.obj" id="2_bhhdu"]
@@ -10,8 +10,24 @@
 [ext_resource type="Script" uid="uid://ib0y7ll3132t" path="res://Scripts/InventoryComponent.gd" id="4_dewec"]
 [ext_resource type="ArrayMesh" uid="uid://dj0xkg07tqg6k" path="res://Assets/Models/MuzzleFlashModel.obj" id="4_megsn"]
 [ext_resource type="Script" uid="uid://doldypd8k64s7" path="res://Scripts/InteractArea.gd" id="7_52ee3"]
+[ext_resource type="ArrayMesh" uid="uid://b3kyn7rkonxwx" path="res://Assets/Models/Food_Pack01/OBJ/Thigh01.obj" id="7_70hv0"]
+[ext_resource type="AudioStream" uid="uid://ciwo2iu6am0y3" path="res://Assets/SFX/ShotgunShoot0.wav" id="7_x63xi"]
 [ext_resource type="PackedScene" uid="uid://cip3vmney7ep7" path="res://Scenes/HitBoxComponent.tscn" id="8_glx4g"]
+[ext_resource type="AudioStream" uid="uid://kabbui5q4035" path="res://Assets/SFX/ShotgunShoot1.wav" id="8_i2e8t"]
+[ext_resource type="PackedScene" uid="uid://bwfevcfnnqomn" path="res://Assets/Models/ExperimentalSyringe.glb" id="8_utwlt"]
+[ext_resource type="AudioStream" uid="uid://irxatnc38rfi" path="res://Assets/SFX/ShotgunShoot2.wav" id="9_qidb7"]
+[ext_resource type="AudioStream" uid="uid://dwjbmgnvm57ih" path="res://Assets/SFX/ShotgunPump.wav" id="10_i2e8t"]
 [ext_resource type="PackedScene" uid="uid://yhsralfexmde" path="res://Scenes/HurtBoxComponent.tscn" id="10_yoq75"]
+[ext_resource type="AudioStream" uid="uid://dtnnglh62kamd" path="res://Assets/SFX/AsphaltFootstep0.wav" id="13_1iu4k"]
+[ext_resource type="AudioStream" uid="uid://718ud1ljf28s" path="res://Assets/SFX/AsphaltFootstep1.wav" id="14_m0x7a"]
+[ext_resource type="AudioStream" uid="uid://dcykuuqn7ycns" path="res://Assets/SFX/AsphaltFootstep2.wav" id="15_5v66d"]
+[ext_resource type="AudioStream" uid="uid://d1dm8vrcoig7o" path="res://Assets/SFX/AsphaltFootstep3.wav" id="16_x63xi"]
+[ext_resource type="AudioStream" uid="uid://kg8vy7lq75og" path="res://Assets/SFX/AsphaltFootstep4.wav" id="17_i2e8t"]
+[ext_resource type="Texture2D" uid="uid://cy0uvk4h6moee" path="res://Assets/Images/shotgun_icon.png" id="17_qidb7"]
+[ext_resource type="AudioStream" uid="uid://x7vbb4qx7thy" path="res://Assets/SFX/AsphaltFootstep5.wav" id="18_qidb7"]
+[ext_resource type="Texture2D" uid="uid://bjvjrxopisdgs" path="res://Assets/Images/food_icon.png" id="19_8flut"]
+[ext_resource type="AudioStream" uid="uid://iewt3ap52lwh" path="res://Assets/SFX/AsphaltFootstep6.wav" id="19_70hv0"]
+[ext_resource type="Texture2D" uid="uid://vt5tniuj4xp3" path="res://Assets/Images/syringe_icon.png" id="20_u7x0b"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_53j0q"]
 radius = 0.3
@@ -38,11 +54,46 @@ size = Vector3(0.1, 0.1, 0.6)
 [sub_resource type="BoxMesh" id="BoxMesh_5ixxa"]
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_70hv0"]
+streams_count = 3
+stream_0/stream = ExtResource("7_x63xi")
+stream_1/stream = ExtResource("8_i2e8t")
+stream_2/stream = ExtResource("9_qidb7")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhhdu"]
 size = Vector3(0.7, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ksbbd"]
 size = Vector3(0.75, 1.6, 0.75)
+
+[sub_resource type="Animation" id="Animation_nn08x"]
+resource_name = "Pump Shotgun"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCam/Hands/Equipment/Shotgun_01/ShotgunPump:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.22, 0.48, 0.6),
+"transitions": PackedFloat32Array(1, -2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.670577, -0.0193431, -0.0144307), Vector3(0.236976, -0.0193431, -0.0144307), Vector3(0.670577, -0.0193431, -0.0144307), Vector3(0.670577, -0.0193431, -0.0144307)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerCam/Hands/PumpSFXPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_5ixxa"]
 length = 0.001
@@ -94,6 +145,54 @@ tracks/3/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerCam/Hands/PumpSFXPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerCam/Hands:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.2, -0.3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerCam/Hands/Equipment/ExperimentalSyringe:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.74228e-08, -2.26893, 3.14159)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerCam/Hands/Equipment/ExperimentalSyringe:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.04, 0, -0.18)]
+}
 
 [sub_resource type="Animation" id="Animation_dewec"]
 resource_name = "Swapping Equipment"
@@ -125,23 +224,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_nn08x"]
-resource_name = "Pump Shotgun"
-length = 0.6
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerCam/Hands/Equipment/Shotgun_01/ShotgunPump:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33, 0.6),
-"transitions": PackedFloat32Array(1, -2, 0.5),
-"update": 0,
-"values": [Vector3(0.670577, -0.0193431, -0.0144307), Vector3(0.236976, -0.0193431, -0.0144307), Vector3(0.670577, -0.0193431, -0.0144307)]
-}
-
 [sub_resource type="Animation" id="Animation_ksbbd"]
 resource_name = "Using Shotgun"
 length = 0.2
@@ -171,16 +253,101 @@ tracks/1/keys = {
 "values": [1.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_8flut"]
+resource_name = "Eating Food"
+length = 1.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCam/Hands:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, -2, -0.5, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, -0.2, -0.3), Vector3(0, -0.2, -0.3), Vector3(0, -0.4, -0.3), Vector3(0, -0.2, -0.3), Vector3(0, -0.4, -0.3), Vector3(0, -0.2, -0.3), Vector3(0, -0.2, -0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerCam/Hands:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.698132, 0, 0), Vector3(0.698132, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_utwlt"]
+resource_name = "Using Syringe"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCam/Hands:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.349066, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerCam/Hands/Equipment/ExperimentalSyringe:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector3(-8.74228e-08, -2.26893, 3.14159), Vector3(0, -0.872665, 3.14159), Vector3(-8.74228e-08, -2.26893, 3.14159)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerCam/Hands/Equipment/ExperimentalSyringe:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector3(0.04, 0, -0.18), Vector3(0.04, 0, -0.05), Vector3(0.04, 0, -0.18)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nn08x"]
 _data = {
+&"Eating Food": SubResource("Animation_8flut"),
 &"Pump Shotgun": SubResource("Animation_nn08x"),
 &"RESET": SubResource("Animation_5ixxa"),
 &"Swapping Equipment": SubResource("Animation_dewec"),
-&"Using Shotgun": SubResource("Animation_ksbbd")
+&"Using Shotgun": SubResource("Animation_ksbbd"),
+&"Using Syringe": SubResource("Animation_utwlt")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8flut"]
+playback_mode = 2
+random_volume_offset_db = 1.0
+streams_count = 7
+stream_0/stream = ExtResource("13_1iu4k")
+stream_1/stream = ExtResource("14_m0x7a")
+stream_2/stream = ExtResource("15_5v66d")
+stream_3/stream = ExtResource("16_x63xi")
+stream_4/stream = ExtResource("17_i2e8t")
+stream_5/stream = ExtResource("18_qidb7")
+stream_6/stream = ExtResource("19_70hv0")
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("vital_component", "velocity_component", "inventory_component")]
 collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_kyqiw")
 vital_component = NodePath("VitalComponent")
 velocity_component = NodePath("VelocityComponent")
@@ -202,8 +369,14 @@ far = 256.0
 [node name="Hands" type="Node3D" parent="PlayerCam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.3)
 
-[node name="Equipment" type="Node3D" parent="PlayerCam/Hands"]
+[node name="Equipment" type="Node3D" parent="PlayerCam/Hands" node_paths=PackedStringArray("entity", "vitality_component", "inventory_component")]
 script = ExtResource("2_ksbbd")
+entity = NodePath("../../..")
+vitality_component = NodePath("../../../VitalComponent")
+inventory_component = NodePath("../../../InventoryComponent")
+bullet_count = 8
+delay_time = 1.0
+spread = 2.25
 
 [node name="CrudeSpearModel" type="MeshInstance3D" parent="PlayerCam/Hands/Equipment"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.25, 0, -0.4)
@@ -213,7 +386,6 @@ skeleton = NodePath("../../../..")
 
 [node name="HitBoxComponent" parent="PlayerCam/Hands/Equipment/CrudeSpearModel" instance=ExtResource("8_glx4g")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -0.7)
-spawn_decal = true
 avoid_target_name = "Player"
 damage = 15
 
@@ -223,6 +395,9 @@ debug_color = Color(0.330671, 0.516907, 0.109104, 0.784314)
 
 [node name="Shotgun_01" parent="PlayerCam/Hands/Equipment" instance=ExtResource("3_bhhdu")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0.2, 0, -0.45)
+
+[node name="ShotgunPump" parent="PlayerCam/Hands/Equipment/Shotgun_01" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.670577, -0.0193431, -0.0144307)
 
 [node name="MuzzleFlash" type="Node3D" parent="PlayerCam/Hands/Equipment/Shotgun_01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0.15, 0)
@@ -239,6 +414,14 @@ mesh = ExtResource("4_megsn")
 skeleton = NodePath("../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_yoq75")
 
+[node name="Thigh01" type="MeshInstance3D" parent="PlayerCam/Hands/Equipment"]
+transform = Transform3D(0.0906308, 0.0422618, 0, -0.0422618, 0.0906308, 0, 0, 0, 0.1, 0.15, 0, -0.15)
+mesh = ExtResource("7_70hv0")
+skeleton = NodePath("../../../..")
+
+[node name="ExperimentalSyringe" parent="PlayerCam/Hands/Equipment" instance=ExtResource("8_utwlt")]
+transform = Transform3D(0.321394, -6.1582e-08, -0.383022, -4.37114e-08, -0.5, 4.37114e-08, -0.383022, 5.38772e-09, -0.321394, 0.04, 0, -0.18)
+
 [node name="GunMesh" type="MeshInstance3D" parent="PlayerCam/Hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.25)
 visible = false
@@ -254,7 +437,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, 0
 light_color = Color(1, 1, 0, 1)
 shadow_enabled = true
 
+[node name="ShootPoint" type="Node3D" parent="PlayerCam/Hands"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.2, 0, -0.35)
+
 [node name="GunSFXPlayer" type="AudioStreamPlayer" parent="PlayerCam/Hands"]
+stream = SubResource("AudioStreamRandomizer_70hv0")
+bus = &"SFX"
+
+[node name="PumpSFXPlayer" type="AudioStreamPlayer" parent="PlayerCam/Hands"]
+stream = ExtResource("10_i2e8t")
 bus = &"SFX"
 
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_gntrk")]
@@ -285,7 +476,8 @@ debug_color = Color(0.996078, 0, 0.188235, 0.784314)
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("4_dewec")
 
-[node name="VitalComponent" parent="." node_paths=PackedStringArray("infection_bar", "vitality_lbl") instance=ExtResource("2_gntrk")]
+[node name="VitalComponent" parent="." node_paths=PackedStringArray("entity", "infection_bar", "vitality_lbl") instance=ExtResource("2_gntrk")]
+entity = NodePath("..")
 infection_bar = NodePath("../HUD/StatsSection/InfectionBar")
 vitality_lbl = NodePath("../HUD/StatsSection/VitalityLbl")
 
@@ -304,6 +496,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("4_5ixxa")
 
 [node name="StatsSection" type="GridContainer" parent="HUD"]
@@ -314,6 +507,7 @@ anchor_right = 1.0
 offset_left = -400.0
 offset_bottom = 400.0
 grow_horizontal = 0
+mouse_filter = 2
 theme_override_constants/v_separation = 20
 
 [node name="InfectionLbl" type="Label" parent="HUD/StatsSection"]
@@ -333,6 +527,81 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Status: HEALTHY"
 
+[node name="IncapLbl" type="Label" parent="HUD/StatsSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "(Incapacitated)"
+
+[node name="InventorySection" type="GridContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -400.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/v_separation = 20
+
+[node name="InventoryLbl" type="Label" parent="HUD/InventorySection"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="ShotgunFlow" type="HFlowContainer" parent="HUD/InventorySection"]
+modulate = Color(0.705882, 0.705882, 0.705882, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShotgunIcon" type="TextureRect" parent="HUD/InventorySection/ShotgunFlow"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("17_qidb7")
+expand_mode = 2
+
+[node name="ShotgunAmmoLbl" type="Label" parent="HUD/InventorySection/ShotgunFlow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FoodFlow" type="HFlowContainer" parent="HUD/InventorySection"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FoodIcon" type="TextureRect" parent="HUD/InventorySection/FoodFlow"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("19_8flut")
+expand_mode = 2
+
+[node name="FoodLbl" type="Label" parent="HUD/InventorySection/FoodFlow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SyringeFlow" type="HFlowContainer" parent="HUD/InventorySection"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SyringeIcon" type="TextureRect" parent="HUD/InventorySection/SyringeFlow"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("20_u7x0b")
+expand_mode = 2
+
+[node name="SyringeLbl" type="Label" parent="HUD/InventorySection/SyringeFlow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CenterPoint" type="ColorRect" parent="HUD"]
 layout_mode = 1
 anchors_preset = 8
@@ -346,6 +615,7 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.823529, 0.882353, 0.92549, 0.784314)
 
 [node name="PerishPnl" type="Panel" parent="HUD"]
@@ -355,6 +625,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PerishLbl" type="Label" parent="HUD/PerishPnl"]
 layout_mode = 1
@@ -376,16 +647,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -140.0
-offset_right = 300.0
-offset_bottom = -111.0
+offset_left = -420.0
+offset_top = -60.0
+offset_right = 420.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-text = "Survived time: 100 seconds."
+text = "Survived time: 100 seconds. (< 1 day)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="ChecklistLbl" type="Label" parent="HUD/PerishPnl"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -403,10 +678,30 @@ text = "Things in checklist done:
 Generator turned on, etc..."
 autowrap_mode = 3
 
+[node name="MainMenuBtn" type="Button" parent="HUD/PerishPnl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -163.5
+offset_top = -280.0
+offset_right = 163.5
+offset_bottom = -243.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "Exit to Main Menu to start over again!"
+text = "Exit to Main Menu"
+
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_nn08x")
 }
+
+[node name="FootstepPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8flut")
+bus = &"SFX"
 
 [connection signal="area_entered" from="InteractArea" to="InteractArea" method="_on_area_entered"]
 [connection signal="update_selected_item" from="InventoryComponent" to="." method="_on_InventoryComponent_updateSelectedItem"]
@@ -414,5 +709,6 @@ libraries = {
 [connection signal="zero_health" from="VitalComponent" to="." method="_on_VitalComponent_zeroHealth"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
 [connection signal="timeout" from="RecoverTimer" to="." method="_on_RecoverTimer_timeout"]
+[connection signal="pressed" from="HUD/PerishPnl/MainMenuBtn" to="." method="_on_MainMenuBtn_pressed"]
 
 [editable path="PlayerCam/Hands/Equipment/Shotgun_01"]

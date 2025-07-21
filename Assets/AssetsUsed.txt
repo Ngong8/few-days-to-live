@@ -9,8 +9,10 @@ https://freesound.org/people/Universfield/sounds/815021/	(Space (30s) by Univers
 https://freesound.org/people/Jadis0x_/sounds/815667/	(Looping Piano Melody by Jadis0x)
 
 SFX:
-https://freesound.org/people/Universfield/sounds/750242/
-https://freesound.org/people/wesleyextreme_gamer/sounds/574819/
+https://freesound.org/people/Universfield/sounds/750242/	(Creepy Horror Sound by Universfield)
+https://freesound.org/people/wesleyextreme_gamer/sounds/574819/	(Horror Checkpoint/Saving game sound effect by wesleyextreme_gamer)
+https://freesound.org/people/LilMati/sounds/528270/	(Radiation by LilMati)
+Footstep, gun sounds from Soundly.
 
 Models:
 https://zsky2000.itch.io/low-poly-weapons-pack-v1 (Low Poly Weapons Pack V.1 by Zsky)
@@ -18,6 +20,8 @@ https://zsky2000.itch.io/ultimate-interior-props (Ultimate Interior Props by Zsk
 https://zsky2000.itch.io/street-props (Street Props by Zsky)
 https://zsky2000.itch.io/modular-houses (Modular Houses by Zsky)
 https://zsky2000.itch.io/50-models-of-environment (Environment Pack V.2 by Zsky)
+https://zsky2000.itch.io/free-3d-food (Cute 3D Food by Zsky)
+https://zsky2000.itch.io/low-poly-trees-vol-1 (Low poly Trees by Zsky)
 
 Textures:
 https://cc0-textures.com/t/cc0t-ground-031 (Ground 031 by CC0 Textures)

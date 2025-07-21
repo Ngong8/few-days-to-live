@@ -6,6 +6,7 @@ extends Node3D
 
 @onready var terrain_3d: Terrain3D = $Terrain3D
 @onready var player_spawn_marker: Marker3D = $PlayerSpawnMarker
+@onready var particles_spawners: Node3D = $ParticlesSpawners
 
 const PLAYER = preload("res://Scenes/Player.tscn")
 
@@ -15,12 +16,13 @@ var can_control_player : bool = false
 func _ready() -> void:
 	$Entities/TestPlayer.queue_free()
 	intro_cam.current = false
+	$DayNightCycleAnim.play("RESET")
 	#print_debug("Terrain 3D textures: " + str(terrain_3d.assets.texture_list) + " | Sizes: " + str(terrain_3d.assets.texture_list.size()))
 	return
 
 func _physics_process(delta: float) -> void:
 	if not has_introcam_look_at_hill:
-		if intro_path_follow.progress_ratio >= 0.2:
+		if intro_path_follow.progress_ratio >= 0.25:
 			_introcam_look_at_hill()
 		if intro_path_follow.progress_ratio >= 0.95 and intro_done_timer.is_stopped():
 			intro_done_timer.start()
@@ -61,8 +63,18 @@ func _intro_done() -> void:
 	player_inst.player_cam.current = true
 	player_inst.is_gained_control = true
 	has_introcam_look_at_hill = true
+	$DayNightCycleAnim.play("Cycling")
 	return
 
 func _on_IntroDoneTimer_timeout() -> void:
 	_intro_done()
+	$ParticlesSpawnTimer.start()
+	return
+
+const PARTICLES = preload("res://Scenes/ContagiousParticles.tscn")
+func _on_ParticlesSpawnTimer_timeout() -> void:
+	var spawner : Marker3D = particles_spawners.get_children().pick_random()
+	var particles_inst = PARTICLES.instantiate()
+	$Entities.add_child(particles_inst)
+	particles_inst.global_position = spawner.global_position
 	return

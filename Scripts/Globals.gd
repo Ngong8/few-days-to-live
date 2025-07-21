@@ -11,9 +11,6 @@ enum weather {
 @onready var change_music_timer: Timer = $ChangeMusicTimer
 @onready var fps_lbl: Label = $FPSLbl
 
-## Changes the rate of time, proceed a certain amount of minutes after 1 second pass continually, sunlight node uses this instead of uses its own one.
-@export_range(0.1,60,0.01) var rate_of_time : float = 1.0
-## Get the passed days in game when loaded one of the game saves.
 var current_time : float = 0.0
 var days_passed : int = 0
 var current_music_index : int = music_index.MENU

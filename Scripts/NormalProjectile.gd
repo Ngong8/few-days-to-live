@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var new_pos : Vector3 = global_position - (global_basis.z * velocity_component.move_speed * delta)
-	new_pos.y += 0.5 * velocity_component.gravity * delta * delta
+	new_pos.y += velocity_component.gravity * delta * delta
 	
 	var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(previous_pos, new_pos)
 	var result : Dictionary = get_world_3d().direct_space_state.intersect_ray(query)

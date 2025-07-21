@@ -9,6 +9,10 @@ class_name HitBoxComponent
 @export var avoid_target_name : String =  ""
 ##Set the normal damage via inspector, usually set with the damage value from the specific item like weapon(s) from ItemData data file.
 @export var damage : int = 5
+##Set the infection progress caused via inspector
+@export var infect_value : float = 0.1
+##Set this should be melee attack or not.
+@export var is_melee : bool = false
 var current_damage : int
 
 ##The sparks particle scene for generic effect.
@@ -31,23 +35,29 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	if area is HurtBoxComponent:
-		print_debug(avoid_target_name)
-		print_debug(area.own_name)
+		#print_debug(avoid_target_name)
+		#print_debug(area.own_name)
 		if area.own_name == avoid_target_name:	return
 		
-		area._take_damage(current_damage, global_position)
+		area._take_damage(current_damage)
 	if entity:	entity.queue_free()
 
 func _on_body_entered(body: Node3D) -> void:
-		if body.collision_layer == 1:
-			if spawn_decal:
-				var spark_inst = SPARKS.instantiate()
-				var bullet_hole_inst = BULLET_HOLE.instantiate()
-				get_tree().root.get_node("MainScene/GameWorld/Entities").add_child(spark_inst)
-				get_tree().root.get_node("MainScene/GameWorld/Decals").add_child(bullet_hole_inst)
-				spark_inst.global_transform = global_transform
-				bullet_hole_inst.global_transform = global_transform
-				var decals = get_tree().get_nodes_in_group("Decals")
-				if decals.size() > 100:
-					decals[0].queue_free()
-			if entity:	entity.queue_free()
+	if body.collision_layer == 1:
+		if spawn_decal:
+			var spark_inst = SPARKS.instantiate()
+			var bullet_hole_inst = BULLET_HOLE.instantiate()
+			get_tree().root.get_node("MainScene/GameWorld/Entities").add_child(spark_inst)
+			get_tree().root.get_node("MainScene/GameWorld/Decals").add_child(bullet_hole_inst)
+			spark_inst.global_transform = global_transform
+			bullet_hole_inst.global_transform = global_transform
+			var decals = get_tree().get_nodes_in_group("Decals")
+			if decals.size() > 100:
+				decals[0].queue_free()
+		if entity:
+			entity.queue_free()
+	elif body.collision_layer == 4:
+		var spark_inst = SPARKS.instantiate()
+		spark_inst.global_transform = global_transform
+		if entity:
+			entity.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwashlq8kj2d7"]
+[gd_scene load_steps=7 format=3 uid="uid://dwashlq8kj2d7"]
 
 [ext_resource type="Script" uid="uid://dpgdfmocjovur" path="res://Scripts/NormalProjectile.gd" id="1_0mitl"]
 [ext_resource type="PackedScene" uid="uid://c5msivjv8gr6h" path="res://Scenes/VelocityComponent.tscn" id="2_3ok44"]
@@ -10,18 +10,31 @@ height = 0.2
 radial_segments = 8
 rings = 4
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ok44"]
+transparency = 4
+metallic = 0.4
+metallic_specular = 1.0
+roughness = 0.6
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_epg7h"]
-radius = 0.2
+radius = 0.15
 
 [node name="NormalProjectile" type="Node3D"]
 script = ExtResource("1_0mitl")
+distance_to_despawn = 60
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_yh0xc")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ok44")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_3ok44")]
+move_speed = 50
+gravity = -5.0
 
-[node name="HitBoxComponent" parent="." instance=ExtResource("3_7bj20")]
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_7bj20")]
+entity = NodePath("..")
+spawn_decal = true
+damage = 12
 
 [node name="Col" type="CollisionShape3D" parent="HitBoxComponent"]
 shape = SubResource("SphereShape3D_epg7h")

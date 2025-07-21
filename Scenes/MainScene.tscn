@@ -7,7 +7,7 @@
 [sub_resource type="Curve3D" id="Curve3D_qxria"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, -0.7, 0.1, 0, 0.7, -0.1, -0.5, 10, 4, 0, 0, 0, 0, 0, 0, 0, 10.5, 4, -0.105668, 0.528675, -0.0586252, 0.105668, -0.528675, 0.0586252, 0.5, 10.2, 4, 0, 0, 0, 0, 0, 0, -0.1, 9.7, 4),
+"points": PackedVector3Array(0, -0.7, 0.1, 0, 0.7, -0.1, -0.5, 20, 44, 0, 0, 0, 0, 0, 0, 0, 20.5, 44, -0.105668, 0.528675, -0.0586252, 0.105668, -0.528675, 0.0586252, 0.5, 20.2, 44, 0, 0, 0, 0, 0, 0, -0.1, 19.7, 44),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -19,7 +19,8 @@ script = ExtResource("1_tr2i4")
 curve = SubResource("Curve3D_qxria")
 
 [node name="MainCamPathFollow" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 10, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349007, 19.8043, 44.0256)
+progress = 2.0244
 rotation_mode = 0
 
 [node name="MainCam" type="Camera3D" parent="Path3D/MainCamPathFollow"]
