@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0b0urb26usrt"]
+[gd_scene load_steps=13 format=3 uid="uid://c0b0urb26usrt"]
 
+[ext_resource type="Script" uid="uid://cmy63stwkiepf" path="res://Scripts/DynamicProps.gd" id="1_o2r4h"]
 [ext_resource type="ArrayMesh" uid="uid://34coaswpdhdw" path="res://Assets/Models/WeaponsPack_V.1/OBJ/ShotgunAmmo_Box.obj" id="1_u6d0w"]
 [ext_resource type="PackedScene" uid="uid://bfduhlu8u6wp0" path="res://Scenes/InteractableArea.tscn" id="2_g5ebx"]
+[ext_resource type="PackedScene" uid="uid://cqnhxys2biifs" path="res://Scenes/ExplosionComponent.tscn" id="3_1nbck"]
+[ext_resource type="PackedScene" uid="uid://cndehur15uhpc" path="res://Scenes/TriggerComponent.tscn" id="4_s6ign"]
+[ext_resource type="PackedScene" uid="uid://dlfrkdb84cntc" path="res://Scenes/VitalComponent.tscn" id="5_kvkm5"]
+[ext_resource type="AudioStream" uid="uid://dmoaklveov630" path="res://Assets/SFX/Explosion0.ogg" id="6_o2r4h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g5ebx"]
 size = Vector3(0.6, 0.4, 0.9)
@@ -9,8 +14,163 @@ size = Vector3(0.6, 0.4, 0.9)
 [sub_resource type="SphereShape3D" id="SphereShape3D_00mx1"]
 radius = 1.0
 
-[node name="ShotgunAmmoBox" type="StaticBody3D"]
-collision_mask = 4
+[sub_resource type="Animation" id="Animation_kvkm5"]
+resource_name = "Destroy"
+length = 1.2
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TriggerComponent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"_trigger_with_delay"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InteractableArea:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Col:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShotgunAmmoBox:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.01, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplosionSFX:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ExplosionComponent")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.02),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.5],
+"method": &"_explosive_dig"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_o2r4h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractableArea:monitorable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Col:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShotgunAmmoBox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplosionSFX:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2r4h"]
+_data = {
+&"Destroy": SubResource("Animation_kvkm5"),
+&"RESET": SubResource("Animation_o2r4h")
+}
+
+[node name="ShotgunAmmoBox" type="RigidBody3D" node_paths=PackedStringArray("vital_component", "anim_player") groups=["DynamicProps"]]
+collision_mask = 5
+script = ExtResource("1_o2r4h")
+vital_component = NodePath("VitalComponent")
+anim_player = NodePath("AnimPlayer")
 
 [node name="ShotgunAmmoBox" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.03, 0.23, 0.025)
@@ -18,9 +178,42 @@ mesh = ExtResource("1_u6d0w")
 
 [node name="Col" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_g5ebx")
+debug_color = Color(0, 0.6, 0.701961, 0.784314)
 
-[node name="InteractableArea" parent="." groups=["ShotgunAmmoBox"] instance=ExtResource("2_g5ebx")]
+[node name="TriggerPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="ExplosionComponent" parent="." instance=ExtResource("3_1nbck")]
+
+[node name="InteractableArea" parent="." groups=["Pickups", "ShotgunAmmoBox"] instance=ExtResource("2_g5ebx")]
 
 [node name="Col" type="CollisionShape3D" parent="InteractableArea"]
 shape = SubResource("SphereShape3D_00mx1")
 debug_color = Color(0.878431, 0.690196, 0, 0.588235)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o2r4h")
+}
+
+[node name="TriggerComponent" parent="." node_paths=PackedStringArray("entity", "trigger_point") instance=ExtResource("4_s6ign")]
+entity = NodePath("..")
+trigger_point = NodePath("../TriggerPoint")
+is_ammo_type = true
+is_random = true
+bullet_count = 100
+
+[node name="VitalComponent" parent="." instance=ExtResource("5_kvkm5")]
+slower_infection_increment = 0.0
+normal_infection_increment = 0.0
+faster_infection_increment = 0.0
+vitality = 20
+
+[node name="ExplosionSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_o2r4h")
+attenuation_model = 3
+volume_db = 20.0
+max_distance = 60.0
+bus = &"SFX"
+
+[connection signal="zero_health" from="VitalComponent" to="." method="_on_VitalComponent_zero_health"]

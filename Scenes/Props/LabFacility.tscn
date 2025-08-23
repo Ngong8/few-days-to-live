@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bifd3bbd0du2k"]
+
+[node name="LabFacility" type="Node3D"]
+
+[node name="Walls" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_mask = 4
+
+[node name="Wall1" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+size = Vector3(0.6, 6, 36)
+
+[node name="Wall2" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+size = Vector3(0.6, 6, 36)
+
+[node name="Wall3" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.3)
+size = Vector3(40.6, 6, 0.6)
+
+[node name="Wall4" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.3)
+size = Vector3(40.6, 6, 0.6)
+
+[node name="Frames" type="CSGCombiner3D" parent="Walls"]
+operation = 2
+calculate_tangents = false
+
+[node name="Frame1" type="CSGBox3D" parent="Walls/Frames"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -18.3)
+size = Vector3(4, 4, 1)
+
+[node name="Frame2" type="CSGBox3D" parent="Walls/Frames"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 0)
+size = Vector3(2, 3, 2)
+
+[node name="Frame3" type="CSGBox3D" parent="Walls/Frames"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2)
+size = Vector3(2, 3, 2)
+
+[node name="Frame4" type="CSGBox3D" parent="Walls/Frames"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2)
+size = Vector3(2, 3, 2)
+
+[node name="Others" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_mask = 4
+
+[node name="Floor" type="CSGBox3D" parent="Others"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0)
+size = Vector3(40.6, 1, 37.2)
+
+[node name="Ceiling" type="CSGBox3D" parent="Others"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+visible = false
+size = Vector3(40.6, 1, 37.2)
+
+[node name="Props" type="Node3D" parent="."]

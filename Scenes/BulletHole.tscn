@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr2nw7rtpcavj"]
+[gd_scene load_steps=4 format=3 uid="uid://cr2nw7rtpcavj"]
 
-[ext_resource type="Texture2D" uid="uid://bundx28wkml20" path="res://icon.svg" id="1_5s0wa"]
+[ext_resource type="Texture2D" uid="uid://cu18jwqvu6c7u" path="res://Assets/Textures/bullet_hole.png" id="1_rey3k"]
+[ext_resource type="Texture2D" uid="uid://ye6a6hhfk38u" path="res://Assets/Textures/bullet_hole_normal.png" id="2_4817h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5s0wa"]
 
 [node name="BulletHole" type="Decal" groups=["Decals"]]
-size = Vector3(0.5, 0.5, 0.5)
-texture_albedo = ExtResource("1_5s0wa")
-cull_mask = 4
+size = Vector3(0.2, 0.2, 0.2)
+texture_albedo = ExtResource("1_rey3k")
+texture_normal = ExtResource("2_4817h")
+distance_fade_enabled = true
+distance_fade_begin = 50.0
+cull_mask = 1
+
+[node name="TestMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183537, -0.50151, -0.488107)
+top_level = true
+visible = false
+mesh = SubResource("BoxMesh_5s0wa")

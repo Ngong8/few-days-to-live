@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bejisu8lutcvp"]
 
-[ext_resource type="PackedScene" uid="uid://gyxob36s2ci5" path="res://Scenes/MainMenu.tscn" id="1_hpc76"]
+[ext_resource type="PackedScene" uid="uid://c671424ruwqg8" path="res://Scenes/MainMenu.tscn" id="1_hpc76"]
 [ext_resource type="Script" uid="uid://bqwx0l50cbk37" path="res://Scripts/MainScene.gd" id="1_tr2i4"]
-[ext_resource type="PackedScene" uid="uid://m7jjpmhaawdh" path="res://Scenes/GameWorld.tscn" id="3_7rqgy"]
+[ext_resource type="PackedScene" uid="uid://t3tuvg62hddg" path="res://Scenes/GameWorld.tscn" id="3_7rqgy"]
 
 [sub_resource type="Curve3D" id="Curve3D_qxria"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, -0.7, 0.1, 0, 0.7, -0.1, -0.5, 20, 44, 0, 0, 0, 0, 0, 0, 0, 20.5, 44, -0.105668, 0.528675, -0.0586252, 0.105668, -0.528675, 0.0586252, 0.5, 20.2, 44, 0, 0, 0, 0, 0, 0, -0.1, 19.7, 44),
+"points": PackedVector3Array(0, -0.7, 0.1, 0, 0.7, -0.1, 40, 30, -120.5, 0, 0, 0, 0, 0, 0, 40, 30.5, -120, -0.105668, 0.528675, -0.0586252, 0.105668, -0.528675, 0.0586252, 40, 30.2, -119, 0, 0, 0, 0, 0, 0, 40, 29.7, -119.5),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -19,14 +19,13 @@ script = ExtResource("1_tr2i4")
 curve = SubResource("Curve3D_qxria")
 
 [node name="MainCamPathFollow" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349007, 19.8043, 44.0256)
-progress = 2.0244
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 30, -120.5)
 rotation_mode = 0
 
 [node name="MainCam" type="Camera3D" parent="Path3D/MainCamPathFollow"]
-transform = Transform3D(0.939693, 0.0885213, -0.330366, 0, 0.965926, 0.258819, 0.34202, -0.24321, 0.907673, 0, 0, 0)
+transform = Transform3D(-0.573577, -0.0713938, 0.816035, 0, 0.996195, 0.0871557, -0.819152, 0.0499905, -0.571394, 0, 0, 0)
 current = true
-far = 200.0
+far = 300.0
 
 [node name="GameWorld" parent="." instance=ExtResource("3_7rqgy")]
 

@@ -25,11 +25,14 @@ Globals="*res://Scenes/Globals.tscn"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 mouse_cursor/tooltip_position_offset=Vector2(10, 20)
 
 [editor]
 
-naming/default_signal_callback_name="_on_{NodeName}_{signalName}"
+movie_writer/movie_file="C:/Game projects/Godot projects/few-days-to-live/Movie/output.avi"
+naming/default_signal_callback_name="_on_{NodeName}_{signal_name}"
 naming/scene_name_casing=1
 naming/script_name_casing=1
 
@@ -37,10 +40,23 @@ naming/script_name_casing=1
 
 enabled=PackedStringArray("res://addons/previous-tab/plugin.cfg", "res://addons/road-generator/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "green",
+"res://Scenes/": "purple",
+"res://Scripts/": "gray",
+"res://addons/": "yellow"
+}
+
 [global_group]
 
 Pickups="Anything that can be picked up."
 Decals=""
+Sparkable="Entities that can cause sparks"
+StaticProps=""
+DynamicProps=""
+PickupSpawners="A spawner for every type of pickup."
 
 [gui]
 
@@ -132,12 +148,22 @@ test_infecting_self={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":74,"key_label":0,"unicode":106,"location":0,"echo":false,"script":null)
 ]
 }
+show_debug_uis={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":75,"key_label":0,"unicode":107,"location":0,"echo":false,"script":null)
+]
+}
+interact_on_world={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
-3d_render/layer_1="Normal"
-3d_render/layer_2="FPS"
-3d_render/layer_3="Liquids"
+3d_render/layer_1="Solids"
+3d_render/layer_2="Liquids"
+3d_render/layer_3="Entities"
 3d_physics/layer_1="Solids"
 3d_physics/layer_2="Liquids"
 3d_physics/layer_3="Entities"
@@ -146,6 +172,7 @@ test_infecting_self={
 
 3d/physics_engine="Jolt Physics"
 jolt_physics_3d/simulation/areas_detect_static_bodies=true
+jolt_physics_3d/simulation/generate_all_kinematic_contacts=true
 
 [rendering]
 

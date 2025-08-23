@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dga56nmuoctj0"]
+[gd_scene load_steps=6 format=3 uid="uid://dga56nmuoctj0"]
 
 [ext_resource type="ArrayMesh" uid="uid://b3kyn7rkonxwx" path="res://Assets/Models/Food_Pack01/OBJ/Thigh01.obj" id="1_las5t"]
+[ext_resource type="Script" uid="uid://cmy63stwkiepf" path="res://Scripts/DynamicProps.gd" id="1_srjs6"]
 [ext_resource type="PackedScene" uid="uid://bfduhlu8u6wp0" path="res://Scenes/InteractableArea.tscn" id="2_srjs6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_srjs6"]
@@ -9,8 +10,10 @@ size = Vector3(0.6, 0.2, 0.2)
 [sub_resource type="SphereShape3D" id="SphereShape3D_00mx1"]
 radius = 1.0
 
-[node name="Food" type="StaticBody3D"]
-collision_mask = 4
+[node name="Food" type="RigidBody3D" groups=["DynamicProps"]]
+collision_mask = 5
+mass = 0.5
+script = ExtResource("1_srjs6")
 
 [node name="Thigh01" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.15, 0, 0)
@@ -20,7 +23,7 @@ skeleton = NodePath("../../../..")
 [node name="Col" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_srjs6")
 
-[node name="InteractableArea" parent="." groups=["Food"] instance=ExtResource("2_srjs6")]
+[node name="InteractableArea" parent="." groups=["Food", "Pickups"] instance=ExtResource("2_srjs6")]
 
 [node name="Col" type="CollisionShape3D" parent="InteractableArea"]
 shape = SubResource("SphereShape3D_00mx1")

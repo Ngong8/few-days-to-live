@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1c7w63kjqwxy"]
+[gd_scene load_steps=6 format=3 uid="uid://c1c7w63kjqwxy"]
 
+[ext_resource type="Script" uid="uid://cmy63stwkiepf" path="res://Scripts/DynamicProps.gd" id="1_yaqb1"]
 [ext_resource type="ArrayMesh" uid="uid://bmhg5vvwpt0el" path="res://Assets/Models/WeaponsPack_V.1/OBJ/ShotgunAmmo.obj" id="2_w7ysa"]
 [ext_resource type="PackedScene" uid="uid://bfduhlu8u6wp0" path="res://Scenes/InteractableArea.tscn" id="2_yaqb1"]
 
@@ -10,8 +11,10 @@ height = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_00mx1"]
 radius = 1.0
 
-[node name="ShotgunAmmo" type="StaticBody3D"]
-collision_mask = 4
+[node name="ShotgunAmmo" type="RigidBody3D" groups=["DynamicProps"]]
+collision_mask = 5
+mass = 0.15
+script = ExtResource("1_yaqb1")
 
 [node name="ShotgunAmmo" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -20,7 +23,7 @@ mesh = ExtResource("2_w7ysa")
 [node name="Col" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_w7ysa")
 
-[node name="InteractableArea" parent="." groups=["ShotgunAmmo"] instance=ExtResource("2_yaqb1")]
+[node name="InteractableArea" parent="." groups=["Pickups", "ShotgunAmmo"] instance=ExtResource("2_yaqb1")]
 
 [node name="Col" type="CollisionShape3D" parent="InteractableArea"]
 shape = SubResource("SphereShape3D_00mx1")

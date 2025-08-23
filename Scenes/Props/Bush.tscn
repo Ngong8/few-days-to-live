@@ -1,17 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci41n75ovkiwf"]
+[gd_scene load_steps=5 format=3 uid="uid://ci41n75ovkiwf"]
 
+[ext_resource type="Script" uid="uid://cn45mb2vww6kw" path="res://Scripts/Bush.gd" id="1_rmg8i"]
+[ext_resource type="PackedScene" uid="uid://c0dsk6kx3w2qt" path="res://Scenes/InteractArea.tscn" id="1_sjnta"]
 [ext_resource type="ArrayMesh" uid="uid://ckcvlsk7wi0cf" path="res://Assets/Models/EnvironomentPackV_2/OBJ/Bush_01.obj" id="1_xbf3q"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_sjnta"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjnta"]
+size = Vector3(0.7, 0.5, 0.7)
 
-[node name="Bush" type="Area3D"]
-collision_layer = 0
-collision_mask = 4
-monitorable = false
+[node name="Bush" type="Node3D"]
+script = ExtResource("1_rmg8i")
 
-[node name="Col" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_sjnta")
+[node name="InteractArea" parent="." instance=ExtResource("1_sjnta")]
+
+[node name="Col" type="CollisionShape3D" parent="InteractArea"]
+shape = SubResource("BoxShape3D_sjnta")
+debug_color = Color(0.623529, 0.384314, 0, 0.784314)
 
 [node name="Bush01" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = ExtResource("1_xbf3q")
+
+[connection signal="interaction" from="InteractArea" to="." method="_on_InteractArea_interaction"]

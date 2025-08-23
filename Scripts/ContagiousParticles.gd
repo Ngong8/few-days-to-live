@@ -5,7 +5,8 @@ extends CharacterBody3D
 @onready var hit_box_component = $HitBoxComponent as HitBoxComponent
 
 var player : CharacterBody3D
-@export var chase_distance : float = 30.0
+@export var min_chase_distance : float = 6.0
+@export var max_chase_distance : float = 30.0
 
 func _ready() -> void:
 	return
@@ -13,8 +14,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	player = get_tree().root.get_node_or_null("MainScene/GameWorld/Entities/Player")
 	if not player:	return
-	if global_position.distance_to(player.global_position) > chase_distance:
-		velocity = velocity.move_toward((player.global_position - global_position).normalized() * velocity_component.move_speed, velocity_component.current_acceleration * delta)
+	if global_position.distance_to(player.global_position) > min_chase_distance and global_position.distance_to(player.global_position) <= max_chase_distance:
+		var target_pos = player.global_position
+		target_pos.y = player.global_position.y + 2.0
+		velocity = velocity.move_toward((target_pos - global_position).normalized() * velocity_component.move_speed, velocity_component.current_acceleration * delta)
 	else:
 		velocity = velocity.move_toward(Vector3(), velocity_component.current_friction * delta)
 
@@ -36,6 +39,7 @@ func _on_VitalComponent_zeroHealth() -> void:
 	_physics_process(false)
 	$SFXPlayer.stop()
 	$DelayTimer.stop()
+	$Col.set_deferred("disabled", true)
 	hit_box_component.set_deferred("monitoring", false)
 	await get_tree().create_timer(1.25).timeout
 	queue_free()

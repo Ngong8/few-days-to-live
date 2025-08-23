@@ -18,6 +18,7 @@ metallic_specular = 1.0
 roughness = 0.5
 emission_enabled = true
 emission = Color(0.302127, 0.0251409, 0.0250842, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wcdrx"]
 radius = 0.6
@@ -71,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.85, 1.0, 0.85]
+"values": [0.85, 2.0, 0.85]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -114,7 +115,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [2.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -136,13 +137,13 @@ _data = {
 &"RESET": SubResource("Animation_gxxcn")
 }
 
-[node name="ContagiousParticles" type="CharacterBody3D"]
+[node name="ContagiousParticles" type="CharacterBody3D" groups=["Sparkable"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_0xy5y")
-chase_distance = 6.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
+layers = 4
 mesh = SubResource("SphereMesh_0xy5y")
 surface_material_override/0 = SubResource("StandardMaterial3D_ug6vd")
 
@@ -150,6 +151,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ug6vd")
 shape = SubResource("SphereShape3D_wcdrx")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+layers = 4
 amount = 160
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_q1itw")
@@ -175,7 +177,7 @@ ground_friction = 0.75
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_ug6vd")]
 avoid_target_name = "Particles"
-infect_value = 0.25
+infect_value = 0.15
 is_melee = true
 
 [node name="Col" type="CollisionShape3D" parent="HitBoxComponent"]
@@ -192,7 +194,7 @@ debug_color = Color(0.996078, 0, 0.188235, 0.784314)
 
 [node name="VitalComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("2_8s02h")]
 entity = NodePath("..")
-vitality = 50
+vitality = 60
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {

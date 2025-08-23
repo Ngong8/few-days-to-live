@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://m7jjpmhaawdh"]
+[gd_scene load_steps=55 format=3 uid="uid://t3tuvg62hddg"]
 
 [ext_resource type="PackedScene" uid="uid://c7fme73utoj8r" path="res://Scenes/Player.tscn" id="1_q75nt"]
 [ext_resource type="Script" uid="uid://do6hxa3isqpqx" path="res://Scripts/GameWorld.gd" id="1_ui0sf"]
@@ -7,23 +7,24 @@
 [ext_resource type="Texture2D" uid="uid://b1mcylrhg82dd" path="res://Assets/Textures/Ground037_256-PNG_Color.png" id="3_rpegc"]
 [ext_resource type="PackedScene" uid="uid://bummvyb5oango" path="res://Scenes/ContagiousParticles.tscn" id="4_4qruq"]
 [ext_resource type="PackedScene" uid="uid://cr2nw7rtpcavj" path="res://Scenes/BulletHole.tscn" id="4_30f34"]
-[ext_resource type="PackedScene" uid="uid://c0b0urb26usrt" path="res://Scenes/Props/ShotgunAmmoBox.tscn" id="4_ff2gi"]
 [ext_resource type="Texture2D" uid="uid://ba1047cgugaw1" path="res://Assets/Textures/Ground037_256-PNG_NormalGL.png" id="4_xtikl"]
-[ext_resource type="PackedScene" uid="uid://c1c7w63kjqwxy" path="res://Scenes/Props/ShotgunAmmo.tscn" id="5_fpis8"]
 [ext_resource type="Texture2D" uid="uid://dt7cyh1jthtp4" path="res://Assets/Textures/Ground031_256-PNG_Color.png" id="5_k07wl"]
 [ext_resource type="PackedScene" uid="uid://ci41n75ovkiwf" path="res://Scenes/Props/Bush.tscn" id="6_4qruq"]
 [ext_resource type="Texture2D" uid="uid://bk85tg3mktayx" path="res://Assets/Textures/Ground031_256-PNG_NormalGL.png" id="6_kycso"]
-[ext_resource type="PackedScene" uid="uid://dga56nmuoctj0" path="res://Scenes/Props/Food.tscn" id="6_vg07e"]
-[ext_resource type="PackedScene" uid="uid://dys1jry23vhep" path="res://Scenes/Props/ExperimentalSyringe.tscn" id="7_jh678"]
+[ext_resource type="PackedScene" uid="uid://mu4pfdt6h0mc" path="res://Scenes/Props/Longhouse.tscn" id="8_jh678"]
 [ext_resource type="Shader" uid="uid://705mddt8cnpr" path="res://Scenes/WaterShader.gdshader" id="8_k07wl"]
 [ext_resource type="Texture2D" uid="uid://dq654mwhu7ne" path="res://Assets/Textures/Two_lanes_road_texture.png" id="8_n0d5i"]
 [ext_resource type="Shader" uid="uid://b36bp6qb3b776" path="res://Scripts/FenceShader.gdshader" id="9_hfae5"]
+[ext_resource type="PackedScene" uid="uid://b88rrobcqahjw" path="res://Scenes/Props/StreetLamp.tscn" id="9_vkc4h"]
 [ext_resource type="Texture2D" uid="uid://csclo1k4n5vb7" path="res://Assets/Textures/Fence008A_256_Color.png" id="10_clku2"]
+[ext_resource type="PackedScene" uid="uid://bifd3bbd0du2k" path="res://Scenes/Props/LabFacility.tscn" id="10_m5hn3"]
 [ext_resource type="Texture2D" uid="uid://ciwmxovfgk1ft" path="res://Assets/Textures/Fence008A_256_NormalGL.png" id="11_oavat"]
 [ext_resource type="Texture2D" uid="uid://bf31a4pq3w6r5" path="res://Assets/Textures/Fence008A_256_Opacity.png" id="12_n0d5i"]
 [ext_resource type="Script" uid="uid://duw537farqvfb" path="res://addons/road-generator/nodes/road_manager.gd" id="13_cllky"]
 [ext_resource type="Script" uid="uid://b88uilprtp72h" path="res://addons/road-generator/nodes/road_container.gd" id="15_ytq2i"]
 [ext_resource type="Script" uid="uid://ccq2mgglnelky" path="res://addons/road-generator/nodes/road_point.gd" id="16_4qruq"]
+[ext_resource type="PackedScene" uid="uid://llq8nmw3tqjv" path="res://Scenes/PickupSpawnMarker.tscn" id="19_k0w3b"]
+[ext_resource type="PackedScene" uid="uid://bmh16prrkqmnx" path="res://Scenes/Props/Road4Way1x1Intersection.tscn" id="20_m5hn3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
 
@@ -35,16 +36,22 @@ background_mode = 2
 sky = SubResource("Sky_nhkr4")
 glow_enabled = true
 glow_normalized = true
+glow_blend_mode = 0
 fog_enabled = true
+fog_mode = 1
 fog_light_color = Color(0.676897, 0.784936, 0.856733, 1)
+fog_density = 1.0
+fog_depth_curve = 0.75
+fog_depth_begin = 0.0
+fog_depth_end = 0.0
 volumetric_fog_albedo = Color(0.676897, 0.784936, 0.856733, 1)
 
-[sub_resource type="Gradient" id="Gradient_ui0sf"]
+[sub_resource type="Gradient" id="Gradient_m5hn3"]
+offsets = PackedFloat32Array(0.2, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tnnpc"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e25jp"]
 noise_type = 2
-frequency = 0.03
 cellular_jitter = 3.0
 cellular_return_type = 0
 domain_warp_enabled = true
@@ -54,12 +61,9 @@ domain_warp_fractal_type = 2
 domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ywpc4"]
-width = 256
-height = 256
-seamless = true
-color_ramp = SubResource("Gradient_ui0sf")
-noise = SubResource("FastNoiseLite_tnnpc")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k0w3b"]
+color_ramp = SubResource("Gradient_m5hn3")
+noise = SubResource("FastNoiseLite_e25jp")
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_llaiv"]
 _shader_parameters = {
@@ -68,30 +72,34 @@ _shader_parameters = {
 &"auto_overlay_texture": 0,
 &"auto_slope": 1.0,
 &"bias_distance": 512.0,
-&"blend_sharpness": 0.1,
+&"blend_sharpness": 0.6,
+&"contour_color": Color(0.92828, 0.924193, 0, 1),
+&"contour_interval": 0.25,
+&"contour_thickness": 3.0,
 &"depth_blur": 0.0,
 &"dual_scale_far": 170.0,
 &"dual_scale_near": 100.0,
 &"dual_scale_reduction": 0.3,
-&"dual_scale_texture": 0,
-&"enable_macro_variation": false,
+&"dual_scale_texture": 1,
+&"enable_macro_variation": true,
 &"enable_projection": true,
 &"flat_terrain_normals": false,
-&"macro_variation1": Color(0.676897, 0.784936, 0.856733, 1),
-&"macro_variation2": Color(1, 1, 1, 1),
-&"macro_variation_slope": 0.1,
+&"macro_variation1": Color(0.904435, 0.904379, 0.941421, 1),
+&"macro_variation2": Color(0.865779, 0.912061, 0.943361, 1),
+&"macro_variation_slope": 0.333,
 &"mipmap_bias": 1.0,
-&"noise1_angle": 0.0,
+&"noise1_angle": 0.5,
 &"noise1_offset": Vector2(0.5, 0.5),
-&"noise1_scale": 0.04,
-&"noise2_scale": 0.076,
-&"noise_texture": SubResource("NoiseTexture2D_ywpc4"),
+&"noise1_scale": 0.2,
+&"noise2_scale": 0.15,
+&"noise_texture": SubResource("NoiseTexture2D_k0w3b"),
 &"projection_threshold": 0.8,
 &"tri_scale_reduction": 0.3
 }
 texture_filtering = 1
 auto_shader = true
 dual_scaling = true
+show_contours = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0d5i"]
 transparency = 4
@@ -111,12 +119,13 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
-[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ytq2i"]
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_vg07e"]
 name = "Bush"
 id = 1
 scene_file = ExtResource("6_4qruq")
 height_offset = 1.0
-density = 1.0
+density = 0.0933621
+cast_shadows = 0
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -133,7 +142,7 @@ albedo_texture = ExtResource("5_k07wl")
 normal_texture = ExtResource("6_kycso")
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_clku2"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_cllky"), SubResource("Terrain3DMeshAsset_ytq2i")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_cllky"), SubResource("Terrain3DMeshAsset_vg07e")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_hfae5"), SubResource("Terrain3DTextureAsset_w0qho")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cllky"]
@@ -154,7 +163,7 @@ points = PackedVector3Array(1.5, 1.5, 0.25, 1.5, 1.5, -0.25, -1.5, 1.5, 0.25, 1.
 
 [sub_resource type="Curve3D" id="Curve3D_hfae5"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 203.561, 18.7906, -125.575, 47.4238, -1.24403, -4.30525, -47.4238, 1.24403, 4.30525, 106.601, 32.0273, -104.355, 34.1416, -1.98433, 0.335297, -34.1416, 1.98433, -0.335297, -7.36263, 37.5581, -145.638, 39.6275, 2.88902, 37.7115, -39.6275, -2.88902, -37.7115, -117.232, 32.0145, -184.849, -6.96786, 1.06026, -19.833, 6.96786, -1.06026, 19.833, -178.548, 53.5628, -76.0754, 0, 0, 0, 0, 0, 0, -188.741, 66.2866, 4.26227),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 205, 18, -160, 23.1945, -1.88864, -6.7821, -23.1945, 1.88864, 6.7821, 106, 32, -160, 34.5084, -2.90892, -2.46034, -34.5084, 2.90892, 2.46034, -8, 40, -155, 42.8374, 4.87859, 2.34279, -42.8374, -4.87859, -2.34279, -110, 37.5, -70, -6.84964, 3.7931, 10.5175, 6.84964, -3.7931, -10.5175, -220, 36, -140, 0, 0, 0, 0, 0, 0, -145, 30, -170),
 "tilts": PackedFloat32Array(0, -0.73035, 0, -0.892695, 0, 0)
 }
 point_count = 6
@@ -164,9 +173,12 @@ size = Vector2(200, 200)
 subdivide_width = 50
 subdivide_depth = 50
 
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_vkc4h"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_clku2"]
 render_priority = 0
 shader = ExtResource("8_k07wl")
+shader_parameter/Noise = SubResource("NoiseTexture3D_vkc4h")
 shader_parameter/Color = Color(0.361457, 0.509218, 0.556288, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k07wl"]
@@ -196,7 +208,7 @@ size = Vector3(512, 20, 1)
 
 [sub_resource type="Animation" id="Animation_vg07e"]
 resource_name = "Cycling"
-length = 120.0
+length = 360.0
 loop_mode = 1
 step = 0.01
 tracks/0/type = "value"
@@ -206,10 +218,10 @@ tracks/0/path = NodePath("Sunlight:light_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 40, 55, 90, 120),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 60, 120, 255, 300, 360),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.530662, 0.672657, 0.765451, 1), Color(0.530662, 0.672657, 0.765451, 1), Color(0.00110637, 0.0099443, 0.0156887, 1), Color(0.00110637, 0.0099443, 0.0156887, 1), Color(0.530662, 0.672657, 0.765451, 1)]
+"values": [Color(0.0254098, 0.141021, 0.182007, 1), Color(0.0235294, 0.141176, 0.180392, 1), Color(0.530662, 0.672657, 0.765451, 1), Color(0.530662, 0.672657, 0.765451, 1), Color(0.0235294, 0.141176, 0.180392, 1), Color(0.0235294, 0.141176, 0.180392, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -218,10 +230,10 @@ tracks/1/path = NodePath("WorldEnvironment:environment:background_energy_multipl
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 40, 55, 90, 120),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 61, 122, 256, 302, 360),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.0, 1.0, 0.0, 0.0, 1.0]
+"values": [0.05, 0.05, 1.0, 1.0, 0.05, 0.05]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -230,10 +242,10 @@ tracks/2/path = NodePath("WorldEnvironment:environment:fog_light_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 40, 54, 88, 120),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 60, 120, 255, 300, 360),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.676897, 0.784936, 0.856733, 1), Color(0.676897, 0.784936, 0.856733, 1), Color(0.350432, 0.486549, 0.574057, 1), Color(0.350432, 0.486549, 0.574057, 1), Color(0.676897, 0.784936, 0.856733, 1)]
+"values": [Color(0.350432, 0.486549, 0.574057, 1), Color(0.350432, 0.486549, 0.574057, 1), Color(0.676897, 0.784936, 0.856733, 1), Color(0.676897, 0.784936, 0.856733, 1), Color(0.350432, 0.486549, 0.574057, 1), Color(0.350432, 0.486549, 0.574057, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_jh678"]
@@ -281,8 +293,9 @@ _data = {
 &"RESET": SubResource("Animation_jh678")
 }
 
-[node name="GameWorld" type="Node3D"]
+[node name="GameWorld" type="Node3D" node_paths=PackedStringArray("particles_spawners")]
 script = ExtResource("1_ui0sf")
+particles_spawners = NodePath("Spawners/ParticlesSpawners")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7rqgy")
@@ -324,91 +337,144 @@ transform = Transform3D(0.0174524, 0, 0.999848, 0, 1, 0, -0.999848, 0, 0.0174524
 [node name="TrafficBarrier2" parent="Props" instance=ExtResource("3_0alvi")]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -51, 4.555, 60)
 
-[node name="ShotgunAmmoBox" parent="Props" instance=ExtResource("4_ff2gi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.869, 3.20703, -178.206)
+[node name="Longhouse" parent="Props" instance=ExtResource("8_jh678")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -196, 2.5, -165)
 
-[node name="ShotgunAmmo" parent="Props" instance=ExtResource("5_fpis8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.743, 3.14527, -178.434)
+[node name="LabFacility" parent="Props" instance=ExtResource("10_m5hn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145, 6, 151)
 
-[node name="ShotgunAmmo2" parent="Props" instance=ExtResource("5_fpis8")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 156.495, 3.07396, -178.17)
+[node name="StreetLamps" type="Node3D" parent="Props"]
 
-[node name="ShotgunAmmo3" parent="Props" instance=ExtResource("5_fpis8")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -49.7659, 3.27257, 141.947)
+[node name="StreetLamp1" parent="Props/StreetLamps" instance=ExtResource("9_vkc4h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -170, 4.7, -172)
 
-[node name="ShotgunAmmo4" parent="Props" instance=ExtResource("5_fpis8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.458, 3.34385, 141.58)
+[node name="StreetLamp2" parent="Props/StreetLamps" instance=ExtResource("9_vkc4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 4.7, -189)
 
-[node name="ShotgunAmmo5" parent="Props" instance=ExtResource("5_fpis8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2856, 3.3438, 141.668)
+[node name="StreetLamp3" parent="Props/StreetLamps" instance=ExtResource("9_vkc4h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -130, 4.7, -172)
 
-[node name="ShotgunAmmo6" parent="Props" instance=ExtResource("5_fpis8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2861, 3.34388, 141.955)
+[node name="StreetLamp4" parent="Props/StreetLamps" instance=ExtResource("9_vkc4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 4.7, -189)
 
-[node name="ShotgunAmmo7" parent="Props" instance=ExtResource("5_fpis8")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -49.9485, 3.27256, 141.925)
+[node name="StreetLamp5" parent="Props/StreetLamps" instance=ExtResource("9_vkc4h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -90, 4.7, -172)
 
-[node name="Food" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.261, 3.13254, -179.121)
-
-[node name="Food2" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(0.62347, 0, -0.781847, 0, 1, 0, 0.781847, 0, 0.62347, 164.216, 3.13254, -179.464)
-
-[node name="Food3" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(-0.277315, 0, 0.960779, 0, 1, 0, -0.960779, 0, -0.277315, 164.705, 3.13254, -179.645)
-
-[node name="Food4" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.37203, 2.31799, 58.7625)
-
-[node name="Food5" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(-0.382683, 0, 0.92388, 0, 1, 0, -0.92388, 0, -0.382683, -2.62453, 1.80571, 73.9721)
-
-[node name="Food6" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(-0.829038, 0, 0.559193, 0, 1, 0, -0.559193, 0, -0.829038, 1.4861, 1.55634, 104.132)
-
-[node name="Food7" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(-0.991445, 0, 0.130526, 0, 1, 0, -0.130526, 0, -0.991445, 23.0021, 1.32311, 115.1)
-
-[node name="Food8" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(-0.130526, 0, 0.991445, 0, 1, 0, -0.991445, 0, -0.130526, 49.4417, 1.62949, 109.737)
-
-[node name="Food9" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(0.649448, 0, 0.760406, 0, 1, 0, -0.760406, 0, 0.649448, 57.969, 1.85787, 101.538)
-
-[node name="Food10" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(-0.147809, 0, 0.989016, 0, 1, 0, -0.989016, 0, -0.147809, 61.9106, 2.38948, 79.2559)
-
-[node name="Food11" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(0.700909, 0, -0.71325, 0, 1, 0, 0.71325, 0, 0.700909, 48.6269, 1.34982, 60.7693)
-
-[node name="Food12" parent="Props" instance=ExtResource("6_vg07e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2109, 1.21628, 54.189)
-
-[node name="ExperimentalSyringe" parent="Props" instance=ExtResource("7_jh678")]
-transform = Transform3D(0.737277, 0, 0.67559, 0, 1, 0, -0.67559, 0, 0.737277, 161.01, 3.05, -179.764)
-
-[node name="ExperimentalSyringe2" parent="Props" instance=ExtResource("7_jh678")]
-transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -49.7242, 3.64977, 137.804)
-
-[node name="ExperimentalSyringe3" parent="Props" instance=ExtResource("7_jh678")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.5286, 3.64934, 136.601)
-
-[node name="ExperimentalSyringe4" parent="Props" instance=ExtResource("7_jh678")]
-transform = Transform3D(0.529919, 0, 0.848048, 0, 1, 0, -0.848048, 0, 0.529919, -52.3852, 3.24897, 142.501)
+[node name="StreetLamp6" parent="Props/StreetLamps" instance=ExtResource("9_vkc4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 4.7, -189)
 
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="TestPlayer" parent="Entities" instance=ExtResource("1_q75nt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2656, 0.796838, 87.1378)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -174.303, 1.16859, -170.156)
 
 [node name="ContagiousParticles" parent="Entities" instance=ExtResource("4_4qruq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.05, 6, 124.463)
+
+[node name="Bush" parent="Entities" instance=ExtResource("6_4qruq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.313, 20.0431, -45.8641)
 
 [node name="Decals" type="Node3D" parent="."]
 
 [node name="BulletHole" parent="Decals" instance=ExtResource("4_30f34")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.655, 0, 98.094)
-cull_mask = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.869, 0.31983, -173.259)
+
+[node name="Spawners" type="Node3D" parent="."]
+
+[node name="PlayerSpawnMarker" type="Marker3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -170, 4, -180)
+gizmo_extents = 5.0
+
+[node name="PickupSpawnMarker1" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 1, -160)
+spawn_item = 1
+spawn_item_hard = 1
+
+[node name="PickupSpawnMarker2" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 1, -158)
+spawn_item = 1
+
+[node name="PickupSpawnMarker3" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149, 1, -158)
+spawn_item = 1
+
+[node name="PickupSpawnMarker4" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149, 1, -162)
+spawn_item = 1
+spawn_item_hard = 1
+
+[node name="PickupSpawnMarker5" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148, 1, -161)
+spawn_item = 1
+spawn_item_hard = 1
+
+[node name="PickupSpawnMarker6" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146, 1, -158)
+spawn_item = 2
+spawn_item_hard = 2
+
+[node name="PickupSpawnMarker7" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149, 1, -156)
+spawn_item = 2
+
+[node name="PickupSpawnMarker8" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -147, 1, -156)
+spawn_item = 3
+spawn_item_hard = 3
+
+[node name="PickupSpawnMarker9" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 1, -155)
+spawn_item = 4
+
+[node name="PickupSpawnMarker10" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145, 1, -155)
+spawn_item = 4
+spawn_item_hard = 4
+
+[node name="PickupSpawnMarker11" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146, 1, -152)
+spawn_item = 4
+spawn_item_hard = 4
+
+[node name="PickupSpawnMarker12" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145, 1, -153)
+spawn_item = 4
+spawn_item_hard = 4
+
+[node name="PickupSpawnMarker13" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143, 1, -153)
+spawn_item = 5
+
+[node name="PickupSpawnMarker14" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143, 1, -158)
+spawn_item = 5
+
+[node name="PickupSpawnMarker15" parent="Spawners" instance=ExtResource("19_k0w3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142, 1, -156)
+spawn_item = 5
+spawn_item_hard = 5
+
+[node name="ParticlesSpawners" type="Node3D" parent="Spawners"]
+
+[node name="ParticlesSpawner1" type="Marker3D" parent="Spawners/ParticlesSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.224, 9, -21.545)
+gizmo_extents = 2.0
+
+[node name="ParticlesSpawner2" type="Marker3D" parent="Spawners/ParticlesSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.432, 6, 91.216)
+gizmo_extents = 2.0
+
+[node name="ParticlesSpawner3" type="Marker3D" parent="Spawners/ParticlesSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.075, 7, -173.463)
+gizmo_extents = 2.0
+
+[node name="ParticlesSpawner4" type="Marker3D" parent="Spawners/ParticlesSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.06, 8, 122.186)
+gizmo_extents = 2.0
+
+[node name="ParticlesSpawner5" type="Marker3D" parent="Spawners/ParticlesSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142.876, 18, 15.131)
+gizmo_extents = 2.0
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 data_directory = "res://Assets/Terrain3DData"
@@ -416,15 +482,12 @@ material = SubResource("Terrain3DMaterial_llaiv")
 assets = SubResource("Terrain3DAssets_clku2")
 collision_mode = 4
 collision_mask = 4
+show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="PlayerSpawnMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.042, 24, -50.272)
-gizmo_extents = 1.0
-
 [node name="RoadManager" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 3, -180)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0.4, -180)
 script = ExtResource("13_cllky")
 material_resource = SubResource("StandardMaterial3D_cllky")
 collision_mask = 4
@@ -433,107 +496,198 @@ metadata/_custom_type_script = "uid://duw537farqvfb"
 [node name="Road_001" type="Node3D" parent="RoadManager"]
 script = ExtResource("15_ytq2i")
 use_lowpoly_preview = true
-collision_mask = 4
-edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
-edge_rp_targets = Array[NodePath]([NodePath("RP_002"), NodePath("")])
-edge_rp_target_dirs = Array[int]([0, -1])
-edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_010")])
-edge_rp_local_dirs = Array[int]([1, 0])
+collision_mask = 5
+edge_containers = Array[NodePath]([NodePath(""), NodePath("../Road4way_1x1_Intersection")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("RP_001")])
+edge_rp_target_dirs = Array[int]([-1, 0])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_004")])
+edge_rp_local_dirs = Array[int]([0, 1])
 
 [node name="RP_001" type="Node3D" parent="RoadManager/Road_001"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-next_pt_init = NodePath("../RP_002")
+auto_lanes = false
+lanes = Array[int]([3, 3])
+next_mag = 24.0
+prior_pt_init = NodePath("../RP_002")
 
 [node name="RP_002" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50, 0, 0)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 16.0
-next_mag = 24.0
+auto_lanes = false
+lanes = Array[int]([3, 3])
+prior_mag = 50.0
+next_mag = 24.0366
+prior_pt_init = NodePath("../RP_003")
+next_pt_init = NodePath("../RP_001")
+
+[node name="RP_003" type="Node3D" parent="RoadManager/Road_001"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -150, 0, -0.591)
+script = ExtResource("16_4qruq")
+traffic_dir = Array[int]([2, 1])
+auto_lanes = false
+lanes = Array[int]([3, 3])
+prior_mag = 50.0
+next_mag = 50.0
+prior_pt_init = NodePath("../RP_004")
+next_pt_init = NodePath("../RP_002")
+
+[node name="RP_004" type="Node3D" parent="RoadManager/Road_001"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -250, 0, -0.458)
+script = ExtResource("16_4qruq")
+traffic_dir = Array[int]([2, 1])
+auto_lanes = false
+lanes = Array[int]([3, 3])
+next_mag = 50.0
+next_pt_init = NodePath("../RP_003")
+
+[node name="Road4way_1x1_Intersection" parent="RoadManager" instance=ExtResource("20_m5hn3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -266, 0, -0.457993)
+edge_containers = Array[NodePath]([NodePath("../Road_001"), NodePath(""), NodePath(""), NodePath("../Road_003"), NodePath(""), NodePath("../Road_004"), NodePath("../Road_002"), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("RP_004"), NodePath(""), NodePath(""), NodePath("RP_001"), NodePath(""), NodePath("RP_001"), NodePath("RP_001"), NodePath("")])
+edge_rp_target_dirs = Array[int]([1, -1, -1, 0, -1, 0, 1, -1])
+
+[node name="Road_002" type="Node3D" parent="RoadManager"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -266, 0, 15.542)
+script = ExtResource("15_ytq2i")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath("../Road4way_1x1_Intersection"), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("RP_004"), NodePath("")])
+edge_rp_target_dirs = Array[int]([0, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_006")])
+edge_rp_local_dirs = Array[int]([1, 0])
+
+[node name="RP_001" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+script = ExtResource("16_4qruq")
+traffic_dir = Array[int]([2, 1])
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 8.0
+next_pt_init = NodePath("../RP_002")
+
+[node name="RP_002" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 16)
+script = ExtResource("16_4qruq")
+traffic_dir = Array[int]([2, 1])
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 8.0
+next_mag = 42.0
 prior_pt_init = NodePath("../RP_001")
 next_pt_init = NodePath("../RP_003")
 
-[node name="RP_003" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 82)
+[node name="RP_003" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 100)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 24.0
-next_mag = 24.0
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 42.0
+next_mag = 55.0
 prior_pt_init = NodePath("../RP_002")
 next_pt_init = NodePath("../RP_004")
 
-[node name="RP_004" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3, 128)
+[node name="RP_004" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 76, 3.7, 180)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 24.0
-next_mag = 16.0
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 55.0
+next_mag = 32.0
 prior_pt_init = NodePath("../RP_003")
 next_pt_init = NodePath("../RP_005")
 
-[node name="RP_005" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, -0.45, 160)
+[node name="RP_005" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 140, 2.5, 180)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 16.0
-next_mag = 38.0
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 32.0
+next_mag = 49.0
 prior_pt_init = NodePath("../RP_004")
 next_pt_init = NodePath("../RP_006")
 
-[node name="RP_006" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(-4.37114e-08, 0.00872654, -0.999962, 0, 0.999962, 0.00872654, 1, 3.81449e-10, -4.37097e-08, -60, 0.6, 210)
+[node name="RP_006" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 175, 2.55, 270)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 38.0
-next_mag = 16.0
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 49.0
+next_mag = 49.0
 prior_pt_init = NodePath("../RP_005")
-next_pt_init = NodePath("../RP_007")
 
-[node name="RP_007" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -112.619, 1, 210.262)
+[node name="Road_003" type="Node3D" parent="RoadManager"]
+transform = Transform3D(1, 0, 4.57398e-20, 0, 1, 0, -4.57398e-20, 0, 1, -282, 0, -0.457993)
+script = ExtResource("15_ytq2i")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath("../Road4way_1x1_Intersection"), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("RP_002"), NodePath("")])
+edge_rp_target_dirs = Array[int]([1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_003")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="RP_001" type="Node3D" parent="RoadManager/Road_003"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 16.0
-next_mag = 24.0
-prior_pt_init = NodePath("../RP_006")
-next_pt_init = NodePath("../RP_008")
+auto_lanes = false
+lanes = Array[int]([2, 2])
+next_mag = 16.0
+prior_pt_init = NodePath("../RP_002")
 
-[node name="RP_008" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -162.589, 0.2, 210.02)
+[node name="RP_002" type="Node3D" parent="RoadManager/Road_003"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -32, 0, 0)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 24.0
-next_mag = 42.3085
-prior_pt_init = NodePath("../RP_007")
-next_pt_init = NodePath("../RP_009")
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 71.5
+next_mag = 16.0
+prior_pt_init = NodePath("../RP_003")
+next_pt_init = NodePath("../RP_001")
 
-[node name="RP_009" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -210, 0.45, 270)
+[node name="RP_003" type="Node3D" parent="RoadManager/Road_003"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -175, 0, 0)
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 42.3085
-next_mag = 24.254
-prior_pt_init = NodePath("../RP_008")
-next_pt_init = NodePath("../RP_010")
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 71.5
+next_pt_init = NodePath("../RP_002")
 
-[node name="RP_010" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(0.999701, 0, -0.0244322, 0, 1, 0, 0.0244322, 0, 0.999701, -210.593, 0.6, 318.504)
+[node name="Road_004" type="Node3D" parent="RoadManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -266, 0, -16.458)
+script = ExtResource("15_ytq2i")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath("../Road4way_1x1_Intersection"), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("RP_003"), NodePath("")])
+edge_rp_target_dirs = Array[int]([1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="RP_001" type="Node3D" parent="RoadManager/Road_004"]
 script = ExtResource("16_4qruq")
 traffic_dir = Array[int]([2, 1])
-lanes = Array[int]([5, 5])
-prior_mag = 24.254
-next_mag = 24.254
-prior_pt_init = NodePath("../RP_009")
+auto_lanes = false
+lanes = Array[int]([2, 2])
+next_mag = 20.0
+prior_pt_init = NodePath("../RP_002")
+
+[node name="RP_002" type="Node3D" parent="RoadManager/Road_004"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+script = ExtResource("16_4qruq")
+traffic_dir = Array[int]([2, 1])
+auto_lanes = false
+lanes = Array[int]([2, 2])
+prior_mag = 20.0
+next_mag = 20.0
+next_pt_init = NodePath("../RP_001")
 
 [node name="TestGround" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -549,6 +703,7 @@ shape = SubResource("ConvexPolygonShape3D_53j0q")
 
 [node name="TestWall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.393)
+visible = false
 collision_mask = 4
 
 [node name="Mesh" type="MeshInstance3D" parent="TestWall"]
@@ -557,29 +712,12 @@ mesh = SubResource("BoxMesh_tnnpc")
 [node name="Col" type="CollisionShape3D" parent="TestWall"]
 shape = SubResource("ConvexPolygonShape3D_ywpc4")
 
-[node name="ParticlesSpawners" type="Node3D" parent="."]
-
-[node name="ParticlesSpawner1" type="Marker3D" parent="ParticlesSpawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-
-[node name="ParticlesSpawner2" type="Marker3D" parent="ParticlesSpawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.432, 6, 91.216)
-
-[node name="ParticlesSpawner3" type="Marker3D" parent="ParticlesSpawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.075, 8, -114.089)
-
-[node name="ParticlesSpawner4" type="Marker3D" parent="ParticlesSpawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.775, 8, 110.291)
-
-[node name="ParticlesSpawner5" type="Marker3D" parent="ParticlesSpawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.499, 30, -84.018)
-
 [node name="IntroPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_hfae5")
 
 [node name="IntroPathFollow" type="PathFollow3D" parent="IntroPath"]
-transform = Transform3D(0.999888, 0, 0, 0, 0.999881, 0, 0, 0, 0.999891, 63.9486, 33.5556, -112.892)
-progress = 144.508
+transform = Transform3D(0.999888, 0, 0, 0, 0.999881, 0, 0, 0, 0.999891, -153.742, 35.7404, -84.0622)
+progress = 398.867
 rotation_mode = 0
 loop = false
 tilt_enabled = false
@@ -609,9 +747,12 @@ size = Vector3(10, 1, 8)
 
 [node name="Water" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 94)
+collision_layer = 2
+collision_mask = 0
+monitoring = false
 
 [node name="WaterMesh" type="MeshInstance3D" parent="Water"]
-layers = 4
+layers = 2
 mesh = SubResource("PlaneMesh_kycso")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_clku2")
@@ -675,6 +816,30 @@ libraries = {
 
 [node name="ParticlesSpawnTimer" type="Timer" parent="."]
 wait_time = 45.0
+
+[node name="TestingBlocks" type="CSGCombiner3D" parent="."]
+visible = false
+collision_mask = 5
+
+[node name="SlopeTest" type="CSGBox3D" parent="TestingBlocks"]
+transform = Transform3D(0.573576, -0.579228, -0.579228, 0, 0.707107, -0.707107, 0.819152, 0.40558, 0.40558, -161.329, 3.88909, -156.919)
+use_collision = true
+collision_mask = 5
+size = Vector3(10, 10, 1)
+
+[node name="BallTest" type="CSGSphere3D" parent="TestingBlocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -170.98, 2, -165.592)
+radius = 1.0
+radial_segments = 24
+rings = 8
+
+[node name="HillMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145, 32, 40)
+gizmo_extents = 5.0
+
+[node name="RoadMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 30, -170)
+gizmo_extents = 5.0
 
 [connection signal="timeout" from="IntroPath/IntroPathFollow/IntroDoneTimer" to="." method="_on_IntroDoneTimer_timeout"]
 [connection signal="timeout" from="ParticlesSpawnTimer" to="." method="_on_ParticlesSpawnTimer_timeout"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://mu4pfdt6h0mc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qaccr"]
+size = Vector3(8, 0.4, 31.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qd5eg"]
+size = Vector3(8, 0.4, 31.4)
+
+[node name="Longhouse" type="Node3D"]
+
+[node name="Walls" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_mask = 4
+
+[node name="Wall1" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+size = Vector3(8, 5, 0.6)
+
+[node name="Wall2" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+size = Vector3(8, 5, 0.6)
+
+[node name="Wall3" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 0, 0)
+size = Vector3(0.6, 5, 32.6)
+
+[node name="Wall4" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0, 0)
+size = Vector3(0.6, 5, 32.6)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
+collision_mask = 4
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_qaccr")
+skeleton = NodePath("../..")
+
+[node name="Col" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_qd5eg")
+debug_color = Color(0, 0.6, 0.701961, 0.862745)

@@ -20,9 +20,56 @@ grow_vertical = 2
 tab_alignment = 1
 current_tab = 0
 
-[node name="Video" type="TabBar" parent="TabContainer"]
+[node name="General" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/General"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/General/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DifficultyLbl" type="Label" parent="TabContainer/General/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Set how hard the game will be to test your capability.
+
+Standard: Have plenty of resources initially and scatter around the map,
+the infection progresses at standard rate most of the times and
+only progresses quicker under infection sources.
+
+Hard: Less resources initially and scatter around the map,
+the infection always progress faster."
+mouse_filter = 0
+text = "Game Difficulty"
+
+[node name="DifficultyOptBtn" type="OptionButton" parent="TabContainer/General/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "Standard"
+popup/item_0/id = 0
+popup/item_1/text = "Hard"
+popup/item_1/id = 1
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
 layout_mode = 1
@@ -59,10 +106,11 @@ popup/item_0/id = 0
 popup/item_1/text = "Fullscreen"
 popup/item_1/id = 1
 
-[node name="WindowSizeLb" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+[node name="WindowSizeLbl" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Set how large the resolution size you want. Only works in windowed mode, I think."
+tooltip_text = "Set how large the resolution size you want.
+Adjust the settings in fullscreen affect most things but UI."
 mouse_filter = 0
 text = "Window Mode"
 
@@ -82,6 +130,24 @@ popup/item_2/id = 2
 popup/item_3/text = "1280x720"
 popup/item_3/id = 3
 
+[node name="ResScaleLbl" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "To see what is the current resolution scale
+based on how much scaling of native 1920x1080 to calculate.
+(This usually not shown and just for the sake of debugging...
+Oh, you can't adjust the resolution scaling at will,
+due to how the resolution sizing work in Godot 4 :( )"
+mouse_filter = 0
+text = "Resolution Scale"
+
+[node name="IndicatorLbl" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+text = "(1.0)"
+horizontal_alignment = 1
+
 [node name="FPSLbl" type="Label" parent="TabContainer/Video/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -98,7 +164,7 @@ button_pressed = true
 [node name="Audio" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
 layout_mode = 1
@@ -170,6 +236,7 @@ offset_bottom = -28.0
 grow_vertical = 0
 text = "Press \"Esc\" to exit the options screen."
 
+[connection signal="item_selected" from="TabContainer/General/MarginContainer/GridContainer/DifficultyOptBtn" to="." method="_on_DifficultyOptBtn_item_selected"]
 [connection signal="item_selected" from="TabContainer/Video/MarginContainer/GridContainer/WindowModeOptBtn" to="." method="_on_window_mode_opt_btn_item_selected"]
 [connection signal="item_selected" from="TabContainer/Video/MarginContainer/GridContainer/WindowSizeOptBtn" to="." method="_on_window_size_opt_btn_item_selected"]
 [connection signal="toggled" from="TabContainer/Video/MarginContainer/GridContainer/FPSCheckbox" to="." method="_on_fps_checkbox_toggled"]

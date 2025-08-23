@@ -5,21 +5,28 @@ extends Node3D
 @export var distance_to_despawn : int = 20
 var previous_pos : Vector3
 var starting_pos : Vector3
-var vertical_velocity : float
+var velocity : Vector3
 var is_despawning : bool = false
 func _ready() -> void:
+	velocity = -global_basis.z * velocity_component.move_speed
+	previous_pos = global_position
 	#$AnimPlayer.play("RESET")
 	pass
 
 func _physics_process(delta: float) -> void:
-	var new_pos : Vector3 = global_position - (global_basis.z * velocity_component.move_speed * delta)
-	new_pos.y += velocity_component.gravity * delta * delta
+	velocity = -global_basis.z * velocity_component.move_speed
+	velocity.y += velocity_component.gravity * delta
+	var new_pos : Vector3 = global_position + velocity * delta
+	#var new_pos : Vector3 = global_position - (global_basis.z * velocity_component.move_speed * delta)
+	#new_pos.y += velocity_component.gravity * delta
 	
 	var query : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(previous_pos, new_pos)
 	var result : Dictionary = get_world_3d().direct_space_state.intersect_ray(query)
 
 	if result:
 		new_pos = result.position
+		hit_box_component.collision_position = result.position
+		hit_box_component.collision_normal = result.normal
 	global_position = new_pos
 	previous_pos = new_pos
 

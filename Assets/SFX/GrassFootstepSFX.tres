@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://d14yuhihiqbfn"]
+
+[ext_resource type="AudioStream" uid="uid://dmoil2lx0vryu" path="res://Assets/SFX/GrassFootstep0.wav" id="1_d8imf"]
+[ext_resource type="AudioStream" uid="uid://tt4rygvysme3" path="res://Assets/SFX/GrassFootstep1.wav" id="2_7u4st"]
+[ext_resource type="AudioStream" uid="uid://dwt1r8m51u8ng" path="res://Assets/SFX/GrassFootstep2.wav" id="3_m2nhp"]
+[ext_resource type="AudioStream" uid="uid://cn1wcocwt8u3x" path="res://Assets/SFX/GrassFootstep3.wav" id="4_15wji"]
+[ext_resource type="AudioStream" uid="uid://ba0yq6wkthd6d" path="res://Assets/SFX/GrassFootstep4.wav" id="5_oeuw6"]
+[ext_resource type="AudioStream" uid="uid://dldbk220163d5" path="res://Assets/SFX/GrassFootstep5.wav" id="6_ee53b"]
+[ext_resource type="AudioStream" uid="uid://li1rtmlp7jdf" path="res://Assets/SFX/GrassFootstep6.wav" id="7_p1x1s"]
+
+[resource]
+playback_mode = 2
+random_volume_offset_db = 2.0
+streams_count = 7
+stream_0/stream = ExtResource("1_d8imf")
+stream_1/stream = ExtResource("2_7u4st")
+stream_2/stream = ExtResource("3_m2nhp")
+stream_3/stream = ExtResource("4_15wji")
+stream_4/stream = ExtResource("5_oeuw6")
+stream_5/stream = ExtResource("6_ee53b")
+stream_6/stream = ExtResource("7_p1x1s")

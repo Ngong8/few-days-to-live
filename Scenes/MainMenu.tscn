@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://gyxob36s2ci5"]
+[gd_scene load_steps=13 format=3 uid="uid://c671424ruwqg8"]
 
 [ext_resource type="Script" uid="uid://b03uqpv81wn3e" path="res://Scripts/MainMenu.gd" id="1_853f1"]
 [ext_resource type="FontFile" uid="uid://c0wcpfhi5sdmt" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="1_tt5f1"]
@@ -209,6 +209,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_853f1")
 
 [node name="TitleLbl" type="Label" parent="."]

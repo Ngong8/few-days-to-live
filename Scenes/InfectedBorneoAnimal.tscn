@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://t7fywuno0ibp"]
+
+[ext_resource type="PackedScene" uid="uid://yhsralfexmde" path="res://Scenes/HurtBoxComponent.tscn" id="1_ac3ca"]
+[ext_resource type="PackedScene" uid="uid://cip3vmney7ep7" path="res://Scenes/HitBoxComponent.tscn" id="1_eon6u"]
+[ext_resource type="PackedScene" uid="uid://dlfrkdb84cntc" path="res://Scenes/VitalComponent.tscn" id="2_eon6u"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eyuhd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eyuhd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h0y7a"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h0y7a"]
+radius = 1.2
+
+[node name="InfectedBorneoAnimal" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_eyuhd")
+
+[node name="Col" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_eyuhd")
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("1_eon6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2)
+avoid_target_name = "BorneoAnimal"
+damage = 25
+infect_value = 0.05
+is_melee = true
+
+[node name="Col" type="CollisionShape3D" parent="HitBoxComponent"]
+shape = SubResource("BoxShape3D_h0y7a")
+debug_color = Color(0.330671, 0.516907, 0.109104, 0.784314)
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("vital_component") instance=ExtResource("1_ac3ca")]
+own_name = "BorneoAnimal"
+vital_component = NodePath("../VitalComponent")
+
+[node name="Col" type="CollisionShape3D" parent="HurtBoxComponent"]
+shape = SubResource("SphereShape3D_h0y7a")
+debug_color = Color(0.996078, 0, 0.188235, 0.784314)
+
+[node name="VitalComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("2_eon6u")]
+entity = NodePath("..")
+vitality = 125
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]

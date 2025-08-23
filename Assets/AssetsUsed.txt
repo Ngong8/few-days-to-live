@@ -12,6 +12,7 @@ SFX:
 https://freesound.org/people/Universfield/sounds/750242/	(Creepy Horror Sound by Universfield)
 https://freesound.org/people/wesleyextreme_gamer/sounds/574819/	(Horror Checkpoint/Saving game sound effect by wesleyextreme_gamer)
 https://freesound.org/people/LilMati/sounds/528270/	(Radiation by LilMati)
+https://freesound.org/people/newlocknew/sounds/712912/	(EXPLDsgn_Classic Explosion.Designed x3_EM by newlocknew)
 Footstep, gun sounds from Soundly.
 
 Models:

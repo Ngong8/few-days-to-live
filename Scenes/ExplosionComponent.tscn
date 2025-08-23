@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqnhxys2biifs"]
+
+[ext_resource type="Script" uid="uid://df1hiwiulovm8" path="res://Scripts/ExplosionComponent.gd" id="1_lwvd8"]
+
+[node name="ExplosionComponent" type="Marker3D"]
+gizmo_extents = 2.0
+script = ExtResource("1_lwvd8")

@@ -1,0 +1,31 @@
+Post SKG Jam update #1:
+
+Addition:
+- Added a new hostile creature - Sxxxxxr (WIP for now, 10% done)
+- Added the satiety system for player character, keep well fed to regain vitality! (WIP for now, 25% done)
+- Added a circular shotgun crosshair in the center (accurate range from 5 to ~30 metres)
+- Added recoil for using shotgun
+- Added bullet hole from gunshots
+- Added material based footstep mechanism
+- Added some new prototyping buildings, will finalise and polish soon!
+- Added light poles around the road (WIP for now, 50% done)
+- Added difficulty option in the main menu's options menu (WIP for now, 50% done)
+- Added a "peculiar" way to adjust the resolution size during fullscreen for low-end devices (Press 'K' key to see the debug text in 'Video' tab within options menu)
+
+Tweaks:
+- Tweaked the fog parameters
+- Adjusted the animation of using equipments to look more natural
+- Changed the main menu scene and intro game cutscene
+- Changed the terrain layout for the game map (WIP for now, 40% done)
+- Changed the time to cycle day-night in-game day longer, around 6 real-life minutes to cycle one in-game day.
+- Some props that are static and dynamic now able to provide "feedback" from player's interaction (WIP for now, 40% done)
+- The contagious anomalies will now only chase the player slowly when get close to a certain distance
+- The contagious anomalies will hover on player a bit instead of collide/hug
+
+Fixes:
+- Fixed the ability to switch to same equipment, switching/using equipment can interrupt issues
+- Fixed the player's spear cannot do melee attack
+- Fixed the contagious anomalies not further infecting the player
+- Fixed the return to main menu button not working when the player is perished
+- Fixed equipment visual clipping
+

@@ -7,10 +7,10 @@ const NUM_HOTBAR_SLOTS = 4
 
 var inventory : Dictionary = {
 	0: ["Spear", 1],
-	1: ["Shotgun", 1],
+	1: ["Shotgun", 0],
 	2: ["Food", 4],
 	3: ["Experimental Healing Syringe", 1],
-	4: ["Shotgun Ammo", 10]
+	4: ["Shotgun Ammo", 0]
 }
 
 @onready var shotgun_ammo_lbl: Label = $"../HUD/InventorySection/ShotgunFlow/ShotgunAmmoLbl"
@@ -49,7 +49,7 @@ func _active_item_scroll_down() -> void:
 	return
 
 func _select_specific_active_item(hotkey_index : int = 1) -> void:
-	print_debug("Hotbar key pressed: " + str(hotkey_index))
+	#print_debug("Hotbar key pressed: " + str(hotkey_index))
 	active_hotbar_index = hotkey_index - 1
 	emit_signal("update_selected_item")
 	return

@@ -19,6 +19,7 @@ var current_weather : int = weather.CLEAR
 #region Values from existing game settings file
 const GAME_SETTINGS_PATH := "user://game_settings.json"
 var version : int = 1
+var game_difficulty : int = 0
 var master_volume : float = 0.0
 var music_volume : float = 0.0
 var sfx_volume : float = 0.0
@@ -28,6 +29,7 @@ var fps_visibility : bool = false
 #endregion
 
 #region Default values when no game settings file is found
+var default_game_difficulty : int = 0
 var default_master_vol : float = 0.9
 var default_music_vol : float = 0.8
 var default_sfx_vol : float = 0.8
@@ -50,6 +52,7 @@ func _create_or_load_gamesettings() -> void:
 	if _gamesettings_exists():
 		_load_gamesettings()
 	else:
+		game_difficulty = default_game_difficulty
 		master_volume = default_master_vol
 		music_volume = default_music_vol
 		sfx_volume = default_sfx_vol
@@ -67,6 +70,7 @@ func _write_gamesettings() -> void:
 		printerr("Could not open the file %s. Aborting save operation. Error code: %s" % [GAME_SETTINGS_PATH, error])
 		return
 	var data : Dictionary = {
+		"game_difficulty": game_difficulty,
 		"master_volume": master_volume,
 		"music_volume": music_volume,
 		"sfx_volume": sfx_volume,
@@ -88,13 +92,14 @@ func _load_gamesettings() -> Resource:
 		return
 	var content = error.get_as_text()
 	var data: Dictionary = JSON.parse_string(content)
-	master_volume = data.master_volume
-	music_volume = data.music_volume
-	sfx_volume = data.sfx_volume
-	window_mode = data.window_mode
-	var temp_size = data.window_screen_size
+	game_difficulty = data.game_difficulty if data.has("game_difficulty") else default_game_difficulty
+	master_volume = data.master_volume if data.has("master_volume") else default_master_vol
+	music_volume = data.music_volume if data.has("music_volume") else default_music_vol
+	sfx_volume = data.sfx_volume if data.has("sfx_volume") else default_sfx_vol
+	window_mode = data.window_mode if data.has("window_mode") else default_win_mode
+	var temp_size = data.window_screen_size if data.has("window_screen_size") else default_res_size
 	window_screen_size = Vector2i(temp_size.x, temp_size.y)
-	fps_visibility = data.fps_visibility
+	fps_visibility = data.fps_visibility if data.has("fps_visibility") else default_fps_visibility
 	error.close()
 	return
 #endregion
